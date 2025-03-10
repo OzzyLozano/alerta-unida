@@ -1,11 +1,11 @@
 # run laravel project
   php artisan serve --host=example.test
-  # runs project at: http://example.test:8000
+  (runs project at: http://example.test:8000)
 
 # tinker commands
   php artisan tinker
   DB::select('<SQL Query>');
-  # allows to run sql querys on the projects database
+  (allows to run sql querys on the projects database)
 
 # artisan commands
   php artisan make:model <name>
@@ -13,7 +13,8 @@
   php artisan make:controller <name>
   php artisan migrate
   php artisan route:list
-  # shows all the project routes
+  (shows all the project routes)
+
 
 
 ## Code of Conduct

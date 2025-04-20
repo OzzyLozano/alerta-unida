@@ -12,7 +12,6 @@ return new class extends Migration {
       $table->string('lastname');
       $table->string('email')->unique();
       $table->string('password');
-      $table->enum('training', ['evacuacion', 'prevencion/combate de fuego', 'busqueda y rescate', 'primeros auxilios']);
       $table->enum('role', ['lider', 'miembro'])->default('miembro');
       $table->timestamps();
     });

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AlertsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BrigadeController;
 use Illuminate\Support\Facades\Route;
 
 Route::domain(env('APP_URL'))->group(function() {
@@ -16,6 +17,7 @@ Route::domain(env('APP_URL'))->group(function() {
   Route::resource('/apis/controller', ApiController::class);
   Route::resource('/apis/alerts', AlertsController::class);
   Route::resource('/apis/users', UserController::class);
+  Route::resource('/apis/brigades', BrigadeController::class);
   
   Route::get('/email/verify', function () {
     return view('auth.verify-email');

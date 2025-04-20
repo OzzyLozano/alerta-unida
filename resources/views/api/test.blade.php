@@ -2,6 +2,10 @@
 
 @section('page-title', 'api')
 
+@section('navbar')
+  @include('components.navbar.apis')
+@endsection
+
 @section('content')
-  <h1>apis</h1>
+  <p>apis</p>
 @endsection

@@ -3,13 +3,13 @@
 @section('page-title', 'Users')
 
 @section('navbar')
-  @include('components.navbar.apis')
+  @include('components.navbar.admin')
 @endsection
 
 @section('content')
   <h1>Usuarios</h1>
   <nav class="api-options">
-    <a href="{{ route('users.create') }}">Create user</a>
+    <a href="{{ route('admin.users.create') }}">Create user</a>
   </nav>
   <div class="container">
     <div class="table-responsive">

@@ -11,14 +11,14 @@ class BrigadeController extends Controller {
    */
   public function index() {
     $brigades = Brigade::with('trainingInfo')->get();
-    return view('api.brigades.index', compact('brigades'));
+    return view('admin.brigades.index', compact('brigades'));
   }
 
   /**
    * Show the form for creating a new resource.
    */
   public function create() {
-    return view('api.brigades.create');
+    return view('admin.brigades.create');
   }
 
   /**

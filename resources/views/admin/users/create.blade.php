@@ -5,7 +5,7 @@
 @section('content')
   <h1>Crear una Usuario</h1>
   <div class="container">
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('admin.users.store') }}" method="POST">
         @csrf
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group mb-2">

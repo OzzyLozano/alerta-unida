@@ -3,7 +3,7 @@
 @section('page-title', 'Brigades')
 
 @section('navbar')
-  @include('components.navbar.apis')
+  @include('components.navbar.admin')
 @endsection
 
 @section('content')

@@ -9,4 +9,8 @@ class Simulacrum extends Model {
     'title',
     'type',
   ];
+
+  public function brigade() {
+    return $this->hasMany(Brigade::class);
+  }
 }

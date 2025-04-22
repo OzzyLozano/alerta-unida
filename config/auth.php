@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'brigade' => [
+            'driver' => 'session',
+            'provider' => 'brigades',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'brigades' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Brigade::class,
+        ],
     ],
 
     /*

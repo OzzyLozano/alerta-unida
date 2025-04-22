@@ -10,4 +10,8 @@ class Alerts extends Model {
     'content',
     'type',
   ];
+
+  public function brigade() {
+    return $this->hasMany(Brigade::class);
+  }
 }

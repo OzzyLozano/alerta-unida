@@ -1,9 +1,9 @@
 <nav class="navbar mx-4">
   <div class="navbar-container__apis">
-    <a href="{{ env('HOME_URL') . '/apis' }}" class="navbar-link">Apis</a>
-    <a href="{{ route('api.alerts.index') }}" class="navbar-link">Alertas</a>
-    <a href="{{ route('api.users.index') }}" class="navbar-link">Usuarios</a>
-    <a href="{{ route('api.brigades.index') }}" class="navbar-link">Brigadistas</a>
+    <a href="{{ env('HOME_URL') . '/admin' }}" class="navbar-link">Admin</a>
+    <a href="{{ route('admin.alerts.index') }}" class="navbar-link">Alertas</a>
+    <a href="{{ route('admin.users.index') }}" class="navbar-link">Usuarios</a>
+    <a href="{{ route('admin.brigades.index') }}" class="navbar-link">Brigadistas</a>
     @if(Auth::guard('brigade')->check())
       <form method="POST" action="{{ route('brigade.logout') }}" style="display:inline;">
         @csrf

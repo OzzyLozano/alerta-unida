@@ -11,27 +11,39 @@ class AlertsController extends Controller {
    */
   public function index() {
     $alerts = Alerts::paginate(10);
-    return view('api.alerts.index', compact('alerts'));
+    return view('admin.alerts.index', compact('alerts'));
   }
 
   /**
    * Show the form for creating a new resource.
    */
   public function create() {
-    return view('api.alerts.create');
+    return view('admin.alerts.create');
   }
 
   /**
    * Store a newly created resource in storage.
    */
   public function store(Request $request) {
-    $alert = new Alerts();
-    $alert->title = $request->title;
-    $alert->content = $request->content;
-    $alert->type = $request->type;
-    $alert->save();
-
-    return redirect()->route('alerts.index');
+    try {
+      $alert = new Alerts();
+      $alert->title = $request->title;
+      $alert->content = $request->content;
+      $alert->type = $request->type;
+      $alert->save();
+  
+      return response()->json([
+        'success' => true,
+        'message' => 'Alerta creada exitosamente',
+        'data'    => $alert,
+      ], 201); 
+    } catch (\Exception $exception) {
+      return response()->json([
+        'success' => false,
+        'message' => 'Error al crear usuario',
+        'error'   => $exception->getMessage(),
+      ], 400);
+    }
   }
 
   /**

@@ -1,6 +1,6 @@
 <nav class="navbar mx-4">
   <div class="navbar-container__apis">
-    <a href="{{ env('HOME_URL') . '/apis' }}" class="navbar-link">Apis</a>
+    <a href="{{ env('HOME_URL') . '/api' }}" class="navbar-link">Apis</a>
     <a href="{{ route('api.alerts.index') }}" class="navbar-link">Alertas</a>
     <a href="{{ route('api.users.index') }}" class="navbar-link">Usuarios</a>
     <a href="{{ route('api.brigades.index') }}" class="navbar-link">Brigadistas</a>

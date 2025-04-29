@@ -58,7 +58,7 @@ class BrigadeController extends Controller {
     }
     $brigade->trainingInfo()->create($entrenamientos, ['brigade_id' => $brigade->id]);
 
-    return redirect()->route('brigades.index');
+    return redirect()->route('admin.brigades.index');
   }
 
   /**

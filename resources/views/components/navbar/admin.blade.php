@@ -4,6 +4,7 @@
     <a href="{{ route('admin.alerts.index') }}" class="navbar-link">Alertas</a>
     <a href="{{ route('admin.users.index') }}" class="navbar-link">Usuarios</a>
     <a href="{{ route('admin.brigades.index') }}" class="navbar-link">Brigadistas</a>
+    <a href="{{ route('admin.simulacrums.index') }}" class="navbar-link">Simulacros</a>
     @if(Auth::guard('brigade')->check())
       <form method="POST" action="{{ route('brigade.logout') }}" style="display:inline;">
         @csrf

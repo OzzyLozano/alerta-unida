@@ -25,7 +25,9 @@
               <option value="primeros auxilios">Primeros auxilios</option>
             </select>
         </div>
-        <a href="">Buscabas crear un simulacro? Ir a creación de simulacros.</a>
+        <p>Buscabas crear un simulacro? 
+          <a href="{{ route('admin.simulacrums.create') }}">Ir a creación de simulacros.</a>
+        </p>
         <div class="form-group">
           <button type="submit" class="btn btn-success">Enviar</button>
         </div>

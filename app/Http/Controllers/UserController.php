@@ -16,27 +16,15 @@ class UserController extends Controller {
   }
 
   public function store(Request $request) {
-    try {
-      $user = new User();
-      $user->name = $request->name;
-      $user->lastname = $request->lastname;
-      $user->email = $request->email;
-      $user->password = $request->password;
-      $user->type = $request->type;
-      $user->save();
-  
-      return response()->json([
-        'success' => true,
-        'message' => 'Usuario creado exitosamente',
-        'data'    => $user,
-      ], 201); 
-    } catch (\Exception $exception) {
-      return response()->json([
-        'success' => false,
-        'message' => 'Error al crear usuario',
-        'error'   => $exception->getMessage(),
-      ], 400);
-    }
+    $user = new User();
+    $user->name = $request->name;
+    $user->lastname = $request->lastname;
+    $user->email = $request->email;
+    $user->password = $request->password;
+    $user->type = $request->type;
+    $user->save();
+
+    return redirect()->route('admin.users.index');
   }
 
   public function show(User $user) {

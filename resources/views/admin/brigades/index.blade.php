@@ -7,7 +7,10 @@
 @endsection
 
 @section('content')
-  <h1>Alertas</h1>
+  <h1>Brigadistas</h1>
+  <nav class="api-options">
+    <a href="{{ route('admin.brigades.create') }}">Create</a>
+  </nav>
   <div class="container">
     <div class="table-responsive">
       <table class="table table-hover table-bordered">

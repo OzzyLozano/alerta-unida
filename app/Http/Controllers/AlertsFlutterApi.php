@@ -27,6 +27,10 @@ class AlertsFlutterApi extends Controller {
     }
   }
 
+  public function getActiveAlerts() {
+    return Alerts::where('status', ['active', 'simulacrum'])->get();
+  }
+
   /**
    * Store a newly created resource in storage.
    */

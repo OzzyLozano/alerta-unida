@@ -21,6 +21,7 @@ Route::domain(env('APP_URL'))->group(function() {
   });
 
   Route::post('/flutter/login', [AuthFlutterController::class, 'login']);
+  Route::post('/flutter/brigade-login', [AuthFlutterController::class, 'brigade_login']);
 
   Route::get('/admin', function () {
     return view('admin.index');
@@ -43,6 +44,9 @@ Route::domain(env('APP_URL'))->group(function() {
   Route::prefix('api')
   ->name('api.')
   ->group(function() {
+    // active alerts for flutter app
+    Route::get('/alerts/active', [App\Http\Controllers\AlertsFlutterApi::class, 'getActiveAlerts']);
+    
     Route::apiResources([
       '/alerts' => AlertsFlutterApi::class,
       '/brigades' => BrigadesFlutterApi::class,

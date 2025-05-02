@@ -30,13 +30,10 @@ class AlertsController extends Controller {
       $alert->title = $request->title;
       $alert->content = $request->content;
       $alert->type = $request->type;
+      $alert->status = $request->status;
       $alert->save();
   
-      return response()->json([
-        'success' => true,
-        'message' => 'Alerta creada exitosamente',
-        'data'    => $alert,
-      ], 201); 
+      return redirect()->route('admin.alerts.index'); 
     } catch (\Exception $exception) {
       return response()->json([
         'success' => false,

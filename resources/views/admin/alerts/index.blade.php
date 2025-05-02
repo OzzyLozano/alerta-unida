@@ -20,6 +20,7 @@
             <th scope="col">Titulo</th>
             <th scope="col">Contenido</th>
             <th scope="col">Tipo</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -29,7 +30,8 @@
               <td>{{ $alert->title }}</td>
               <td>{{ $alert->content }}</td>
               <td>{{ $alert->type }}</td>
-            </tr>    
+              <td>{{ $alert->status }}</td>
+            </tr>
           @endforeach
         </tbody>
       </table>

@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
       $middleware->validateCsrfTokens(except: [
           'api/*',
-          'flutter/login',
+          'flutter/*',
       ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -9,6 +9,7 @@ class Alerts extends Model {
     'title',
     'content',
     'type',
+    'status',
   ];
 
   public function brigade() {

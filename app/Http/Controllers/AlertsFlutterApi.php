@@ -28,7 +28,7 @@ class AlertsFlutterApi extends Controller {
   }
 
   public function getActiveAlerts() {
-    return Alerts::where('status', ['active', 'simulacrum'])->get();
+    return Alerts::whereIn('status', ['active', 'simulacrum'])->get();
   }
 
   /**

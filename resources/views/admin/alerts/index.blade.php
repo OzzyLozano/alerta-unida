@@ -21,6 +21,7 @@
             <th scope="col">Contenido</th>
             <th scope="col">Tipo</th>
             <th scope="col">Estado</th>
+            <th scope="col">Es Simulacro</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -31,6 +32,7 @@
               <td>{{ $alert->content }}</td>
               <td>{{ $alert->type }}</td>
               <td>{{ $alert->status }}</td>
+              <td>{{ $alert->simulacrum  }}</td>
             </tr>
           @endforeach
         </tbody>

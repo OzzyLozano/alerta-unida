@@ -28,7 +28,7 @@ class AlertsFlutterApi extends Controller {
   }
 
   public function getActiveAlerts() {
-    return Alerts::whereIn('status', ['active', 'simulacrum'])->get();
+    return Alerts::where('status', 'active')->get();
   }
 
   /**
@@ -48,8 +48,23 @@ class AlertsFlutterApi extends Controller {
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Alerts $alerts) {
-    //
+  public function update(Request $request, $id) {
+    try {
+      $alert = Alerts::FindOrFail($id);
+      $alert->status = $request->status;
+      $alert->save();
+
+      return response()->json([
+        'success' => true,
+        'message' => 'Alertas modificada exitosamente',
+      ], 200); 
+    } catch (\Exception $exception) {
+      return response()->json([
+        'success' => false,
+        'message' => 'Error :c',
+        'error' => $exception->getMessage(),
+      ], 400);
+    }
   }
 
   /**

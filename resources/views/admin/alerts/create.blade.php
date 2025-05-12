@@ -28,15 +28,18 @@
         <div class="form-group mb-2">
             <label for="status">Estado:</label>
             <select name="status" id="status" class="form-control" required>
-              <option value="simulacrum">Simulacro</option>
               <option value="active">Activa</option>
               <option value="resolved">Resuelta</option>
               <option value="cancelled">Cancelada</option>
             </select>
         </div>
-        <p>Buscabas crear un simulacro? 
-          <a href="{{ route('admin.simulacrums.create') }}">Ir a creación de simulacros.</a>
-        </p>
+        <div class="form-group mb-2">
+            <label for="simulacrum">Es un simulacro?</label>
+            <select name="simulacrum" id="simulacrum" class="form-control" required>
+              <option value="true">Simulacro</option>
+              <option value="false">Alerta</option>
+            </select>
+        </div>
         <div class="form-group">
           <button type="submit" class="btn btn-success">Enviar</button>
         </div>

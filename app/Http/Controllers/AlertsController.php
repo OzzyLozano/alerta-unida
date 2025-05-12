@@ -25,22 +25,15 @@ class AlertsController extends Controller {
    * Store a newly created resource in storage.
    */
   public function store(Request $request) {
-    try {
-      $alert = new Alerts();
-      $alert->title = $request->title;
-      $alert->content = $request->content;
-      $alert->type = $request->type;
-      $alert->status = $request->status;
-      $alert->save();
+    $alert = new Alerts();
+    $alert->title = $request->title;
+    $alert->content = $request->content;
+    $alert->type = $request->type;
+    $alert->status = $request->status;
+    $alert->simulacrum = $request->simulacrum;
+    $alert->save();
   
-      return redirect()->route('admin.alerts.index'); 
-    } catch (\Exception $exception) {
-      return response()->json([
-        'success' => false,
-        'message' => 'Error al crear usuario',
-        'error'   => $exception->getMessage(),
-      ], 400);
-    }
+    return redirect()->route('admin.alerts.index');
   }
 
   /**

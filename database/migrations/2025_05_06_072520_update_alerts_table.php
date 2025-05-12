@@ -10,7 +10,7 @@ return new class extends Migration {
    */
   public function up(): void {
     Schema::table('alerts', function (Blueprint $table) {
-      $table->enum('status', ['active', 'resolved', 'cancelled']);
+      $table->boolean('simulacrum');
     });
   }
 
@@ -19,7 +19,7 @@ return new class extends Migration {
    */
   public function down(): void {
     Schema::table('alerts', function (Blueprint $table) {
-      $table->dropColumn('status');
+      $table->dropColumn('simulacrum');
     });
   }
 };

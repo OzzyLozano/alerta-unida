@@ -10,7 +10,7 @@ class AlertsController extends Controller {
    * Display a listing of the resource.
    */
   public function index() {
-    $alerts = Alerts::paginate(10);
+    $alerts = Alerts::all();
     return view('admin.alerts.index', compact('alerts'));
   }
 

@@ -21,6 +21,9 @@ class Brigade extends Authenticatable {
   public function trainingInfo() {
     return $this->hasMany(TrainingInfo::class);
   }
+  public function reports() {
+    return $this->hasMany(Report::class);
+  }
 
   protected $hidden = [
     'password',

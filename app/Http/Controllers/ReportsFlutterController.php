@@ -45,26 +45,34 @@ class ReportsFlutterController extends Controller {
   
   public function sendReport(Request $request) {
     try {
+      $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'img' => 'required|image|mimes:jpeg,png,jpg,gif',
+        'user_id' => 'required|integer|exists:users,id'
+      ]);
+
       $imgPath = $request->file('img')->store('images/reports', 'public');
 
       $report = Report::create([
-        'title' => $request['title'] ?? null,
-        'description' => $request['description'] ?? null,
+        'title' => $request->input('title'),
+        'description' => $request->input('description'),
         'img_path' => $imgPath,
         'status' => 'on_wait',
-        'user_id' => $request['user_id'],
-        'brigadist_id' => $request['brigadist_id'] ?? null,
+        'user_id' => $request->input('user_id'),
+        'brigadist_id' => null,
       ]);
 
       return response()->json([
         'success' => true,
         'message' => 'Reporte enviado exitosamente',
+        'data' => $report
       ], 200); 
     } catch (\Exception $exception) {
       return response()->json([
         'success' => false,
-        'message' => 'Error :c',
-        'error' => $exception->getMessage(),
+        'message' => 'Error al procesar el reporte',
+        'error' => $exception->getMessage()
       ], 400);
     }
   }

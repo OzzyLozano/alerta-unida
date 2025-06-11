@@ -48,7 +48,7 @@ class ReportsFlutterController extends Controller {
       $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
-        'img' => 'required|image|mimes:jpeg,png,jpg,gif',
+        'img' => 'required|image',
         'user_id' => 'required|integer|exists:users,id'
       ]);
 

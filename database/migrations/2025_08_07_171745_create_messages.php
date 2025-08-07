@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('email'); // Elimina el after y el paréntesis extra
-            $table->text('message'); // Quité los espacios extra
+            $table->string('email'); 
+            $table->text('message'); 
             $table->timestamps();
         });
     }

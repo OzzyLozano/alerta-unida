@@ -8,6 +8,7 @@ return new class extends Migration {
     public function up(): void {
       Schema::create('simulacrum', function (Blueprint $table) {
       $table->id();
+      $table->foreignId('brigade_id')->constrained('brigade')->onDelete('cascade');
       $table->string('title');
       $table->enum('type', ['evacuacion', 'prevencion/combate de fuego', 'busqueda y rescate', 'primeros auxilios']);
       $table->timestamps();

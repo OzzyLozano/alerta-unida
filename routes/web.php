@@ -77,11 +77,11 @@ Route::domain('api.' . env('APP_URL'))->group(function() {
   Route::get('/', function () {
     return view('api.test');
   });
-  Route::get('/hello', function () {
-    return 'hello';
-  });
-  Route::resource('/controller', ApiController::class);
 });
+
+Route::get('/brigade/login', [BrigadeLoginController::class, 'index'])->name('brigade.show-login');
+Route::post('/brigade/login', [BrigadeLoginController::class, 'login'])->name('brigade.login');
+Route::post('/brigade/logout', [BrigadeLoginController::class, 'logout'])->name('brigade.logout');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

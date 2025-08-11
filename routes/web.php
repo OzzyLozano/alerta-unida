@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApiController;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\AlertsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrigadeController;
@@ -18,15 +16,12 @@ use App\Http\Controllers\ReportsFlutterController;
 
 use App\Http\Controllers\BrigadeLoginController;
 use App\Http\Controllers\AuthFlutterController;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Route;
 
 // Route::domain(env('APP_URL'))->group(function() {
   Route::get('/', function () {
     return view('welcome');
   });
-<<<<<<< Updated upstream
-=======
 
   Route::post('/flutter/login', [AuthFlutterController::class, 'login']);
   Route::post('/flutter/brigade-login', [AuthFlutterController::class, 'brigade_login']);
@@ -73,7 +68,6 @@ use Illuminate\Support\Facades\Route;
     ]);
   });
   
->>>>>>> Stashed changes
   Route::get('/dashboard', function () {
     return view('dashboard');
   })->middleware(['auth', 'verified'])->name('dashboard');

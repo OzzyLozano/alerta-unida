@@ -17,4 +17,7 @@ class Alerts extends Model {
   public function brigade() {
     return $this->belongsTo(Brigade::class);
   }
+  public function messages() {
+    return $this->hasMany(Message::class, 'alert_id');
+  }
 }

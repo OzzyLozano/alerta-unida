@@ -6,9 +6,6 @@
     <a href="{{ route('admin.brigades.index') }}" class="navbar-link">Brigadistas</a>
     <a href="{{ route('admin.simulacrums.index') }}" class="navbar-link">Simulacros</a>
     <a href="{{ route('admin.reports.index') }}" class="navbar-link">Reportes</a>
-<<<<<<< HEAD
     <a href="{{ route('admin.messages.index') }}" class="navbar-link">Mensajes</a>
-=======
->>>>>>> main
   </div>
 </nav>

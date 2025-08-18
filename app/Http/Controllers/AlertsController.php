@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alerts;
+use App\Models\Brigade;
 use Illuminate\Http\Request;
 
 class AlertsController extends Controller {
@@ -62,5 +63,12 @@ class AlertsController extends Controller {
    */
   public function destroy(Alerts $alerts) {
     //
+  }
+
+  // personalized functions
+  public function chat($id) {
+    $brigadists = Brigade::with('trainingInfo')->get();
+    $alert = Alerts::with('messages.brigade')->findOrFail($id);
+    return view('admin.alerts.chat', compact('alert', 'brigadists'));
   }
 }

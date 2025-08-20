@@ -1,9 +1,12 @@
 @extends('layouts.app') {{-- O el layout que uses --}}
 
+@section('navbar')
+  @include('components.navbar.admin')
+@endsection
+
 @section('content')
     <h1>Mensajes</h1>
     
-
     @if(session('success'))
         <div style="color: green;">
             {{ session('success') }}

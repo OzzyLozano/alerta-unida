@@ -7,5 +7,6 @@
     <a href="{{ route('admin.simulacrums.index') }}" class="navbar-link">Simulacros</a>
     <a href="{{ route('admin.reports.index') }}" class="navbar-link">Reportes</a>
     <a href="{{ route('admin.messages.index') }}" class="navbar-link">Mensajes</a>
+    <a href="{{ route('admin.check_in.index') }}" class="navbar-link">Check-in</a>
   </div>
 </nav>

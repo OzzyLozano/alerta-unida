@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Brigade;
 
-class Message extends Model {
+class TrainingInfo extends Model {
+  protected $table = 'training_info';
+
   protected $fillable = [
     'brigade_id',
-    'alert_id',
-    'message',
+    'evacuacion',
+    'prevencion_combate',
+    'busqueda_rescate',
+    'primeros_auxilios',
   ];
-  
+
   public function brigade() {
     return $this->belongsTo(Brigade::class);
-  }
-
-  public function alert() {
-    return $this->belongsTo(Alerts::class);
   }
 }

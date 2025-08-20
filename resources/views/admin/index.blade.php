@@ -3,9 +3,9 @@
 @section('page-title', 'api')
 
 @section('navbar')
-  @include('components.navbar.apis')
+  @include('components.navbar.admin')
 @endsection
 
 @section('content')
-  <p>apis</p>
+  <p>admin</p>
 @endsection

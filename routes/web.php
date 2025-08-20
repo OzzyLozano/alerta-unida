@@ -70,6 +70,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('messages/send/{id}', [MessagesFlutterController::class, 'sendMessage']);
     // check-in
     Route::get('check_in/', [CheckinController::class, 'storeApi']);
+    Route::post('/check_in/storeApi', [CheckinController::class, 'storeApi']);
     
     Route::apiResources([
       '/alerts' => AlertsFlutterApi::class,

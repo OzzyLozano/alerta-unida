@@ -68,6 +68,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('messages/send/{id}', [MessagesFlutterController::class, 'sendMessage']);
     
     // FCM tokens
+    Route::get('/fcm/token', [FcmController::class, 'index']);
     Route::post('/fcm/token', [FcmController::class, 'storeToken']);
     Route::delete('/fcm/token', [FcmController::class, 'removeToken']);
 

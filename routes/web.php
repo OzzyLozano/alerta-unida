@@ -72,6 +72,7 @@ use Illuminate\Support\Facades\Route;
     
     // FCM tokens
     Route::post('/fcm/token', [FcmController::class, 'storeToken']);
+    Route::post('/fcm/refresh-token', [FcmController::class, 'refreshToken']);
     Route::delete('/fcm/token', [FcmController::class, 'removeToken']);
 
     Route::apiResources([

@@ -14,18 +14,18 @@ class FcmController extends Controller {
     return view('admin.fcm.index', compact('tokens'));
   }
 
-  // public function destroy($id) {
-  //   try {
-  //     $token = FcmToken::findOrFail($id);
-  //     $token->delete();
+  public function destroy($id) {
+    try {
+      $token = FcmToken::findOrFail($id);
+      $token->delete();
       
-  //     return redirect()->route('fcm.tokens')
-  //           ->with('success', 'Token eliminado exitosamente');
-  //   } catch (\Exception $e) {
-  //     return redirect()->route('fcm.tokens')
-  //           ->with('error', 'Error al eliminar el token');
-  //   }
-  // }
+      return redirect()->route('admin.fcm.index')
+            ->with('success', 'Token eliminado exitosamente');
+    } catch (\Exception $e) {
+      return redirect()->route('admin.fcm.index')
+            ->with('error', 'Error al eliminar el token');
+    }
+  }
 
   public function storeToken(Request $request) {
     $validator = Validator::make($request->all(), [

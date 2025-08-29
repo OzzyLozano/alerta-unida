@@ -79,6 +79,15 @@
                 <br><small class="text-muted">{{ $token->created_at->diffForHumans() }}</small>
               </td>
               <td>
+                <form action="{{ route('fcm.tokens.destroy', $token->id) }}" 
+                      method="POST" 
+                      onsubmit="return confirm('¿Estás seguro de eliminar este token?')">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
               </td>
             </tr>
           @endforeach

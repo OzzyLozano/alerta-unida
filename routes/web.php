@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
     Route::resource('messages', MessagesController::class);
     Route::get('alerts/{alert}/chat', [AlertsController::class, 'chat'])->name('alerts.chat');
     Route::get('fcm', [FcmController::class, 'index'])->name('fcm.index');
-    Route::delete('fcm', [FcmController::class, 'destroy'])->name('fcm.destroy');
+    Route::delete('fcm/delete/{id}', [FcmController::class, 'destroy'])->name('fcm.destroy');
   });
 
   Route::get('/api', function () {

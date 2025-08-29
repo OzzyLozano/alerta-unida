@@ -35,6 +35,7 @@
             <th scope="col">Device ID</th>
             <th scope="col">Plataforma</th>
             <th scope="col">Registrado</th>
+            <th scope="col">Modificado</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -75,6 +76,10 @@
               <td>
                 {{ $token->created_at->format('d/m/Y H:i') }}
                 <br><small class="text-muted">{{ $token->created_at->diffForHumans() }}</small>
+              </td>
+              <td>
+                {{ $token->updated_at->format('d/m/Y H:i') }}
+                <br><small class="text-muted">{{ $token->updated_at->diffForHumans() }}</small>
               </td>
               <td>
                 <form action="{{ route('admin.fcm.destroy', $token->id) }}" 

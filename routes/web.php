@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\Route;
     Route::resource('reports', ReportsController::class);
     Route::resource('messages', MessagesController::class);
     Route::get('alerts/{alert}/chat', [AlertsController::class, 'chat'])->name('alerts.chat');
-    Route::get('fcm/token', [FcmController::class, 'index']);
+    Route::get('fcm', [FcmController::class, 'index']);
   });
 
   Route::get('/api', function () {

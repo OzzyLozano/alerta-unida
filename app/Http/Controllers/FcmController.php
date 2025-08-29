@@ -11,7 +11,7 @@ class FcmController extends Controller {
     $tokens = FcmToken::with(['user', 'brigade'])
               ->orderBy('created_at', 'desc')
               ->get();
-    return view('admin.fcm.tokens', compact('tokens'));
+    return view('admin.fcm.index', compact('tokens'));
   }
 
   // public function destroy($id) {

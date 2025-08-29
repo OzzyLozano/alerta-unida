@@ -7,6 +7,26 @@ use App\Models\FcmToken;
 use Illuminate\Support\Facades\Validator;
 
 class FcmController extends Controller {
+  public function index() {
+    $tokens = FcmToken::with(['user', 'brigade'])
+              ->orderBy('created_at', 'desc')
+              ->get();
+    return view('fcm.tokens', compact('tokens'));
+  }
+
+  public function destroy($id) {
+    try {
+      $token = FcmToken::findOrFail($id);
+      $token->delete();
+      
+      return redirect()->route('fcm.tokens')
+            ->with('success', 'Token eliminado exitosamente');
+    } catch (\Exception $e) {
+      return redirect()->route('fcm.tokens')
+            ->with('error', 'Error al eliminar el token');
+    }
+  }
+
   public function storeToken(Request $request) {
     $validator = Validator::make($request->all(), [
       'token' => 'required|string',

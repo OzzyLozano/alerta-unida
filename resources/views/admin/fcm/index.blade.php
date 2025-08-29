@@ -45,10 +45,10 @@
               <td>
                 @if($token->user_id)
                   {{ $token->user->name ?? 'N/A' }} {{ $token->user->lastname ?? '' }}
-                  <br><small class="text-muted">User #{{ $token->user_id }}</small>
+                  <br><small class="text-muted">User</small>
                 @elseif($token->brigade_id)
                   {{ $token->brigade->name ?? 'N/A' }} {{ $token->brigade->lastname ?? '' }}
-                  <br><small class="text-muted">Brigade #{{ $token->brigade_id }}</small>
+                  <br><small class="text-muted">Brigade</small>
                 @else
                   <span class="text-muted">No asociado</span>
                 @endif

@@ -8,6 +8,7 @@ use App\Http\Controllers\BrigadeController;
 use App\Http\Controllers\SimulacrumController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\FcmController;
 
 use App\Http\Controllers\AlertsFlutterApi;
 use App\Http\Controllers\BrigadesFlutterApi;

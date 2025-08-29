@@ -67,6 +67,10 @@ use Illuminate\Support\Facades\Route;
     // send messages flutter
     Route::post('messages/send/{id}', [MessagesFlutterController::class, 'sendMessage']);
     
+    // FCM tokens
+    Route::post('/fcm/token', [FcmController::class, 'storeToken']);
+    Route::delete('/fcm/token', [FcmController::class, 'removeToken']);
+
     Route::apiResources([
       '/alerts' => AlertsFlutterApi::class,
       '/brigades' => BrigadesFlutterApi::class,

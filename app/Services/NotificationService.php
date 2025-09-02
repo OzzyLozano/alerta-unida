@@ -16,7 +16,8 @@ class NotificationService {
 
   public function __construct() {
     try {
-      $factory = (new Factory)->withServiceStorage(base_path('firebase_credentials.json'));
+      // $factory = (new Factory)->withServiceStorage(base_path('firebase_credentials.json'));
+      $factory = (new Factory)->withServiceAccount(base_path('firebase_credentials.json'));
       $this->messaging = $factory->createMessaging();
     } catch (\Exception $e) {
       Log::error('Error inicializando Firebase: ' . $e->getMessage());

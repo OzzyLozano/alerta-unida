@@ -13,8 +13,12 @@ class FirebaseServiceProvider extends ServiceProvider {
    */
   public function register(): void {
     // Registrar Firebase Factory como singleton
+    // $this->app->singleton(Factory::class, function ($app) {
+      // return (new Factory)->withServiceStorage(base_path('firebase_credentials.json'));
+    // });
+
     $this->app->singleton(Factory::class, function ($app) {
-      return (new Factory)->withServiceStorage(base_path('firebase_credentials.json'));
+        return (new Factory)->withServiceAccount(base_path('firebase_credentials.json'));
     });
 
     // Registrar Notification Service

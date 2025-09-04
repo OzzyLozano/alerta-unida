@@ -24,6 +24,32 @@ use Illuminate\Support\Facades\Route;
   Route::get('/', function () {
     return view('welcome');
   });
+//   Route::get('/chat', function() {
+//     return view('chat');
+//   });
+//   use App\Events\MyEvent;
+
+// Route::get('/test-pusher', function () {
+//     // Usar config() en lugar de env()
+//     $config = [
+//         'PUSHER_APP_KEY' => config('broadcasting.connections.pusher.key'),
+//         'PUSHER_APP_CLUSTER' => config('broadcasting.connections.pusher.options.cluster'),
+//         'PUSHER_APP_ID' => config('broadcasting.connections.pusher.app_id'),
+//         'PUSHER_APP_SECRET' => config('broadcasting.connections.pusher.secret'),
+//     ];
+    
+//     dump($config);
+    
+//     // Enviar evento de prueba
+//     try {
+//         event(new MyEvent('Mensaje de prueba desde Laravel ' . now()));
+//         dump('Evento enviado exitosamente');
+//     } catch (\Exception $e) {
+//         dump('Error al enviar evento: ' . $e->getMessage());
+//     }
+    
+//     return "Revisa la consola de PHP para ver los detalles";
+// });
 
   Route::post('/flutter/login', [AuthFlutterController::class, 'login']);
   Route::post('/flutter/brigade-login', [AuthFlutterController::class, 'brigade_login']);

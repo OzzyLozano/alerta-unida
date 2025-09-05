@@ -33,4 +33,8 @@ class NewChatMessage implements ShouldBroadcast {
       'created_at' => $this->message->created_at->toDateTimeString(),
     ];
   }
+  
+  public function broadcastAs() {
+    return 'NewChatMessage';
+  }
 }

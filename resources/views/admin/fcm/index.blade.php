@@ -24,78 +24,80 @@
       </div>
     @endif
 
-    <div class="table-responsive">
-      <table class="table table-hover table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Usuario/Brigadista</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Token</th>
-            <th scope="col">Device ID</th>
-            <th scope="col">Plataforma</th>
-            <th scope="col">Registrado</th>
-            <th scope="col">Modificado</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          @foreach($tokens as $token)
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+          <thead>
             <tr>
-              <th scope="row">{{ $token->id }}</th>
-              <td>
-                @if($token->user_id)
-                  {{ $token->user->name ?? 'N/A' }} {{ $token->user->lastname ?? '' }}
-                @elseif($token->brigade_id)
-                  {{ $token->brigade->name ?? 'N/A' }} {{ $token->brigade->lastname ?? '' }}
-                @else
-                  <span class="text-muted">No asociado</span>
-                @endif
-              </td>
-              <td>
-                @if($token->user_id)
-                  <span class="badge bg-success">Usuario</span>
-                @else
-                  <span class="badge bg-warning text-dark">Brigadista</span>
-                @endif
-              </td>
-              <td>
-                <small class="font-monospace" style="font-size: 0.8em;">
-                  {{ Str::limit($token->token, 30) }}
-                </small>
-                <button class="btn btn-sm btn-outline-secondary ms-1" 
-                        onclick="copyToClipboard('{{ $token->token }}')"
-                        title="Copiar token">
-                  <i class="bi bi-clipboard"></i>
-                </button>
-              </td>
-              <td>
-                <small class="font-monospace">{{ $token->device_id }}</small>
-              </td>
-              <td>{{ $token->platform }}</td>
-              <td>
-                {{ $token->created_at->format('d/m/Y H:i') }}
-                <br><small class="text-muted">{{ $token->created_at->diffForHumans() }}</small>
-              </td>
-              <td>
-                {{ $token->updated_at->format('d/m/Y H:i') }}
-                <br><small class="text-muted">{{ $token->updated_at->diffForHumans() }}</small>
-              </td>
-              <td>
-                <form action="{{ route('admin.fcm.destroy', $token->id) }}" 
-                      method="POST" 
-                      onsubmit="return confirm('¿Estás seguro de eliminar este token?')">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </form>
-              </td>
+              <th scope="col">ID</th>
+              <th scope="col">Usuario/Brigadista</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Token</th>
+              <th scope="col">Device ID</th>
+              <th scope="col">Plataforma</th>
+              <th scope="col">Registrado</th>
+              <th scope="col">Modificado</th>
+              <th scope="col">Acciones</th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="table-group-divider">
+            @foreach($tokens as $token)
+              <tr>
+                <th scope="row">{{ $token->id }}</th>
+                <td>
+                  @if($token->user_id)
+                    {{ $token->user->name ?? 'N/A' }} {{ $token->user->lastname ?? '' }}
+                  @elseif($token->brigade_id)
+                    {{ $token->brigade->name ?? 'N/A' }} {{ $token->brigade->lastname ?? '' }}
+                  @else
+                    <span class="text-muted">No asociado</span>
+                  @endif
+                </td>
+                <td>
+                  @if($token->user_id)
+                    <span class="badge bg-success">Usuario</span>
+                  @else
+                    <span class="badge bg-warning text-dark">Brigadista</span>
+                  @endif
+                </td>
+                <td>
+                  <small class="font-monospace" style="font-size: 0.8em;">
+                    {{ Str::limit($token->token, 30) }}
+                  </small>
+                  <button class="btn btn-sm btn-outline-secondary ms-1" 
+                          onclick="copyToClipboard('{{ $token->token }}')"
+                          title="Copiar token">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
+                </td>
+                <td>
+                  <small class="font-monospace">{{ $token->device_id }}</small>
+                </td>
+                <td>{{ $token->platform }}</td>
+                <td>
+                  {{ $token->created_at->format('d/m/Y H:i') }}
+                  <br><small class="text-muted">{{ $token->created_at->diffForHumans() }}</small>
+                </td>
+                <td>
+                  {{ $token->updated_at->format('d/m/Y H:i') }}
+                  <br><small class="text-muted">{{ $token->updated_at->diffForHumans() }}</small>
+                </td>
+                <td>
+                  <form action="{{ route('admin.fcm.destroy', $token->id) }}" 
+                        method="POST" 
+                        onsubmit="return confirm('¿Estás seguro de eliminar este token?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
 
     @if($tokens->isEmpty())

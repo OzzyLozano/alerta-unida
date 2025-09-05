@@ -8,7 +8,7 @@
 
 @section('content')
   <h1>Brigadistas</h1>
-  <nav class="api-options">
+  <nav class="api-options container">
     <a href="{{ route('admin.brigades.create') }}">Create</a>
   </nav>
   <div class="container">

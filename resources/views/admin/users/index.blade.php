@@ -8,7 +8,7 @@
 
 @section('content')
   <h1>Usuarios</h1>
-  <nav class="api-options">
+  <nav class="api-options container">
     <a href="{{ route('admin.users.create') }}">Create</a>
   </nav>
   <div class="container">

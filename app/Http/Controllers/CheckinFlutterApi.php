@@ -6,7 +6,7 @@ use App\Models\Checkin;
 use Illuminate\Http\Request;
 
 class CheckinFlutterApi extends Controller {
-  public function storeApi(Request $request) {
+  public function checkIn(Request $request) {
     $request->validate([
       'alert_id' => 'required|integer|exists:alerts,id',
       'user_id' => 'required|integer|exists:users,id',

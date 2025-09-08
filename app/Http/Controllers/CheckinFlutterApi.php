@@ -6,27 +6,18 @@ use App\Models\Checkin;
 use Illuminate\Http\Request;
 
 class CheckinFlutterApi extends Controller {
-  public function checkIn(Request $request) {
-    $request->validate([
-      'alert_id' => 'required|integer',
-      'user_id' => 'required|integer',
-      'meeting_point' => 'nullable|integer',
-      'are_you_okay' => 'nullable|string',
-    ]);
-
-    $checkin = Checkin::firstOrNew([
+  public function storeApi(Request $request) {
+    $checkin = Checkin::updateOrCreate([
       'alert_id' => $request->alert_id,
-      'user_id' => $request->user_id
-    ]);
-
-    $checkin->meeting_point = $request->meeting_point ?? $checkin->meeting_point;
-    $checkin->are_you_okay = $request->are_you_okay ?? $checkin->are_you_okay;
-
-    $checkin->save();
-
+      'user_id' => $request->user_id ], [
+      'meeting_point' => $request->meeting_point,
+      'are_you_okay' => $request->are_you_okay
+      ]
+    );
+    
     return response()->json([
         'message' => 'Check-in registrado correctamente',
         'data' => $checkin
-    ], 200);
+    ], 201);
   }
 }

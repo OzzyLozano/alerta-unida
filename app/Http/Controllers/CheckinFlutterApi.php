@@ -5,10 +5,8 @@ use App\Models\Checkin;
 
 use Illuminate\Http\Request;
 
-class CheckinFlutterApi extends Controller
-{
-    public function storeApi(Request $request)
-{
+class CheckinFlutterApi extends Controller {
+    public function storeApi(Request $request) {
     $checkin = new Checkin();
     $checkin->alert_id = $request->alert_id;
     $checkin->meeting_point = $request->meeting_point;
@@ -21,7 +19,7 @@ class CheckinFlutterApi extends Controller
         'message' => 'Check-in registrado correctamente',
         'data' => $checkin
     ], 201);
-}
+  }
 
     //
 }

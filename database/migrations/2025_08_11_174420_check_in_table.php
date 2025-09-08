@@ -12,8 +12,9 @@ return new class extends Migration {
             $table->foreignId('alert_id') // 🔗 Relación con la alerta activa
                   ->constrained('alerts') // referencia a tabla alerts
                   ->onDelete('cascade');  // si se borra la alerta, se borran check-ins
-            $table->string('name'); // Nombre del estudiante
-            $table->string('email'); // Correo del estudiante
+            $table->foreignId('user_id') // 🔗 Relación con la alerta activa
+                  ->constrained('users') // referencia a tabla alerts
+                  ->onDelete('cascade');  // si se borra la alerta, se borran check-ins
             $table->tinyInteger('meeting_point')->nullable(); // 1 a 4 o futura geolocalización
             $table->enum('are_you_okay', ['Si', 'No']); // Estado del estudiante
             $table->timestamps(); // Fecha y hora del check-in

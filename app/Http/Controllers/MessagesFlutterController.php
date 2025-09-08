@@ -6,6 +6,7 @@ use App\Models\Alerts;
 use App\Models\Brigade;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Events\NewChatMessage;
 
 class MessagesFlutterController extends Controller {
   public function chatJson($id) {
@@ -30,16 +31,30 @@ class MessagesFlutterController extends Controller {
   }
 
   public function sendMessage(Request $request, $id) {
+    \Log::info('📨 SendMessage called', $request->all());
+
     $request->validate([
       'alert_id' => 'required|exists:alerts,id',
       'message' => 'required|string|max:1000',
     ]);
+    \Log::info('✅ Validation passed');
 
     $message = Message::create([
       'alert_id' => $request->alert_id,
       'brigade_id'  => $id,
       'message'  => $request->message,
     ]);
+    \Log::info('📝 Message created', ['id' => $message->id]);
+    
+    $message->load('brigade:id,name,lastname');
+    \Log::info('🔔 Dispatching NewChatMessage event');
+    
+    try {
+      event(new NewChatMessage($message));
+      \Log::info('✅ Event dispatched successfully');
+    } catch (\Exception $e) {
+      \Log::error('❌ Event failed: ' . $e->getMessage());
+    }
 
     return response()->json([
       'success' => true,

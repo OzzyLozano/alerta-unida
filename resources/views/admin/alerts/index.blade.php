@@ -24,6 +24,7 @@
             <th scope="col">Estado</th>
             <th scope="col">Es Simulacro</th>
             <th scope="col">Chat</th>
+            <th scope="col">Check In</th>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -40,10 +41,11 @@
                 <a href="{{ route('admin.alerts.chat', $alert->id) }}" class="btn btn-primary btn-sm">
                   Ver Chat
                 </a>
+              </td>
+              <td>
                 <a href="{{ route('admin.checkin', $alert->id) }}" class="btn btn-primary btn-sm"> 
                   Ir a Check-in 
                 </a>
-           
               </td>
             </tr>
           @endforeach

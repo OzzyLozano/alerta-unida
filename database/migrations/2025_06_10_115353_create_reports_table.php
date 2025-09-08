@@ -16,7 +16,7 @@ return new class extends Migration {
       $table->string('img_path');
       $table->enum('status', ['accepted', 'on_wait', 'cancelled']);
       $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-      $table->foreignId('brigadist_id')->nullable()->constrained('brigade')->onDelete('cascade')->change();
+      $table->foreignId('brigadist_id')->nullable()->constrained('brigade')->onDelete('cascade');
       $table->timestamps();
     });
   }

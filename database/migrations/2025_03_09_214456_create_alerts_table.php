@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void {
     Schema::create('alerts', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('brigade_id')->nullable()->constrained('brigade')->onDelete('cascade')->change();
+      $table->foreignId('brigade_id')->nullable()->constrained('brigade')->onDelete('cascade');
       $table->string('title');
       $table->text('content');
       $table->enum('type', ['evacuacion', 'prevencion/combate de fuego', 'busqueda y rescate', 'primeros auxilios']);

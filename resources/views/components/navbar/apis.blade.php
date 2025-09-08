@@ -1,6 +1,8 @@
-<nav class="navbar mx-4">
+<nav class="navbar">
+  <a href="{{ env('HOME_URL') . '/api' }}" class="logo-container">
+    <img src="{{ asset('img/alerta_unida_isotipo.png') }}" alt="logo">
+  </a>
   <div class="navbar-container__apis">
-    <a href="{{ env('HOME_URL') . '/api' }}" class="navbar-link">Apis</a>
     <a href="{{ route('api.alerts.index') }}" class="navbar-link">Alertas</a>
     <a href="{{ route('api.users.index') }}" class="navbar-link">Usuarios</a>
     <a href="{{ route('api.brigades.index') }}" class="navbar-link">Brigadistas</a>

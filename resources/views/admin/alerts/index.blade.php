@@ -8,7 +8,7 @@
 
 @section('content')
   <h1>Alertas</h1>
-  <nav class="api-options">
+  <nav class="api-options container">
     <a href="{{ route('admin.alerts.create') }}">Create</a>
   </nav>
   <div class="container">
@@ -40,7 +40,7 @@
                 <a href="{{ route('admin.alerts.chat', $alert->id) }}" class="btn btn-primary btn-sm">
                   Ver Chat
                 </a>
-                <a href="{{ route('admin.check_in.create', $alert->id) }}" class="btn btn-primary btn-sm"> 
+                <a href="{{ route('admin.checkin', $alert->id) }}" class="btn btn-primary btn-sm"> 
                   Ir a Check-in 
                 </a>
            

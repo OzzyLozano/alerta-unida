@@ -43,7 +43,7 @@
                 </a>
               </td>
               <td>
-                <a href="{{ route('admin.checkin', $alert->id) }}" class="btn btn-primary btn-sm"> 
+                <a href="{{ route('admin.alerts.checkin', $alert->id) }}" class="btn btn-primary btn-sm"> 
                   Ir a Check-in 
                 </a>
               </td>

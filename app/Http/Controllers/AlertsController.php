@@ -73,8 +73,8 @@ class AlertsController extends Controller {
     return view('admin.alerts.chat', compact('alert', 'brigadists'));
   }
   
-  public function chekIn($id) {
+  public function checkIn($id) {
     $alert = Alerts::with(['checkins.user'])->findOrFail($id);
-    return view('alerts.show', compact('alert'));
+    return view('admin.alerts.check-in', compact('alert'));
   }
 }

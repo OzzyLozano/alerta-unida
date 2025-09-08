@@ -47,7 +47,7 @@ Route::prefix('admin')
   Route::get('fcm', [FcmController::class, 'index'])->name('fcm.index');
   Route::delete('fcm/delete/{id}', [FcmController::class, 'destroy'])->name('fcm.destroy');
 
-  Route::get('alerts/{alert}/chek-in', [AlertsController::class, 'checkIn'])->name('alerts.chekin');
+  Route::get('alerts/{alert}/check-in', [AlertsController::class, 'checkIn'])->name('alerts.checkin');
 });
 
 Route::get('/api', function () {

@@ -10,8 +10,8 @@ class CheckinFlutterApi extends Controller {
     $request->validate([
       'alert_id' => 'required|integer',
       'user_id' => 'required|integer',
-      'meeting_point' => 'nullable|string',
-      'are_you_okay' => 'nullable|boolean',
+      'meeting_point' => 'nullable|integer',
+      'are_you_okay' => 'nullable|string',
     ]);
 
     $checkin = Checkin::firstOrNew([

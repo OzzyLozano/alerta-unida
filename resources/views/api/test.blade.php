@@ -3,7 +3,7 @@
 @section('page-title', 'api')
 
 @section('navbar')
-  @include('components.navbar.apis')
+  @include('partials.navbar.apis')
 @endsection
 
 @section('content')

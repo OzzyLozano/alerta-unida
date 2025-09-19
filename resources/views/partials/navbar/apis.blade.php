@@ -2,11 +2,18 @@
   <a href="{{ env('HOME_URL') . '/api' }}" class="logo-container">
     <img src="{{ asset('img/alerta_unida_isotipo.png') }}" alt="logo">
   </a>
-  <div class="navbar-container__apis">
+  
+  <div class="navbar-burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="navbar-menu">
     <a href="{{ route('api.alerts.index') }}" class="navbar-link">Alertas</a>
     <a href="{{ route('api.users.index') }}" class="navbar-link">Usuarios</a>
     <a href="{{ route('api.brigades.index') }}" class="navbar-link">Brigadistas</a>
-    @if(Auth::guard('brigade')->check())
+    <!-- @if(Auth::guard('brigade')->check())
       <form method="POST" action="{{ route('brigade.logout') }}" style="display:inline;">
         @csrf
         <button type="submit" class="navbar-link">
@@ -15,6 +22,6 @@
       </form>
     @else
       <a href="{{ route('brigade.login') }}" class="navbar-link">Log In</a>
-    @endif
+    @endif -->
   </div>
 </nav>

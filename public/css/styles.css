@@ -116,9 +116,30 @@ a {
 }
 
 .api-options {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: var(--orange);
+}
+.api-options a {
+  background-color: aliceblue;
+  color: black;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.api-options p {
+  margin-bottom: 0!important;
+}
+.filter-options {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.filter-options input {
+  background-color: aliceblue;
+  color: black;
+  padding: 0.25rem 0.5rem;
 }
 
 .btn-primary {

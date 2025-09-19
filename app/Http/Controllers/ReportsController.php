@@ -11,9 +11,24 @@ class ReportsController extends Controller {
   /**
    * Display a listing of the resource.
    */
-  public function index() {
-    $reports = Report::All();
-    return view('admin.reports.index', compact('reports'));
+  public function index(Request $request) {
+    $query = Report::query();
+
+    // Filtro por tipos múltiples
+    if ($request->filled('type')) {
+      $query->whereIn('type', $request->type);
+    }
+
+    // Filtro por estados múltiples
+    if ($request->filled('status')) {
+      $query->whereIn('status', $request->status);
+    }
+
+    $totalCount = $query->count();
+    $reports = $query->orderBy('created_at', 'desc')
+                    ->paginate(15)
+                    ->appends($request->query());
+    return view('admin.reports.index', compact('reports', 'totalCount'));
   }
 
   /**

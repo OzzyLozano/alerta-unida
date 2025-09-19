@@ -10,8 +10,35 @@
   <h1>Brigadistas</h1>
   <nav class="api-options container">
     <a href="{{ route('admin.brigades.create') }}">Create</a>
+    <p>Filtrar por:</p>
+    
+    <form action="{{ route('admin.brigades.index') }}" method="get" class="filter-options">
+      
+      @php
+        $types = [
+          'evacuacion' => 'Evacuación',
+          'prevencion_combate' => 'Prevención/Combate de fuego',
+          'busqueda_rescate' => 'Búsqueda y rescate',
+          'primeros_auxilios' => 'Primeros auxilios',
+        ];
+      @endphp
+      @foreach ($types as $value => $label)
+        <input type="checkbox"
+              class="btn-check"
+              id="type-{{ $value }}"
+              name="type[]"
+              value="{{ $value }}"
+              {{ in_array($value, (array) request('type')) ? 'checked' : '' }}>
+        <label class="btn" for="type-{{ $value }}">
+          {{ $label }}
+        </label>
+      @endforeach
+
+      <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+    </form>
   </nav>
   <div class="container">
+    <p>Resultados: {{ $totalCount }}</p>
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead>

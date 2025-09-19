@@ -116,5 +116,6 @@
         </tbody>
       </table>
     </div>
+    {{ $alerts->links() }}
   </div>
 @endsection

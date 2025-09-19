@@ -70,5 +70,6 @@
         </tbody>
       </table>
     </div>
+    {{ $brigades->links() }}
   </div>
 @endsection

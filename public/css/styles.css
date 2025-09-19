@@ -130,6 +130,13 @@ a {
   white-space: nowrap;
   gap: 0.5rem;
 }
+.api-options::-webkit-scrollbar {
+  height: 0.5rem;
+}
+.api-options::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 0.25rem;
+}
 .api-options a {
   background-color: aliceblue;
   color: black;

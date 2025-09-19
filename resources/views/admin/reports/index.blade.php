@@ -10,8 +10,34 @@
   <h1>Reportes</h1>
   <nav class="api-options container">
     <a href="{{ route('admin.reports.create') }}">Create</a>
+    <p>Filtrar por:</p>
+    
+    <form action="{{ route('admin.reports.index') }}" method="get" class="filter-options">
+
+      @php
+        $states = [
+          'accepted' => 'Aceptado',
+          'on_wait' => 'En Espera',
+          'cancelled' => 'Cancelado'
+        ];
+      @endphp
+      @foreach($states as $value => $label)
+        <input  type="checkbox"
+                class="btn-check"
+                id="status-{{$label}}"
+                name="status[]"
+                value="{{ $value }}"
+                {{ in_array($value, (array) request('status')) ? 'checked' : '' }}>
+        <label class="btn" for="status-{{$label}}">
+          {{ $label }}
+        </label>
+      @endforeach
+
+      <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+    </form>
   </nav>
   <div class="container">
+    <p>Resultados: {{ $totalCount }}</p>
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead>

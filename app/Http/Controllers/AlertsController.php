@@ -11,9 +11,29 @@ class AlertsController extends Controller {
   /**
    * Display a listing of the resource.
    */
-  public function index() {
-    $alerts = Alerts::all();
-    return view('admin.alerts.index', compact('alerts'));
+  public function index(Request $request) {
+    $query = Alerts::query();
+
+    // Filtro por tipos múltiples
+    if ($request->filled('type')) {
+      $query->whereIn('type', $request->type);
+    }
+
+    // Filtro por estados múltiples
+    if ($request->filled('status')) {
+      $query->whereIn('status', $request->status);
+    }
+
+    // Filtro por simulacro
+    if ($request->filled('simulacrum')) {
+      $query->whereIn('simulacrum', $request->simulacrum);
+    }
+
+    $totalCount = $query->count();
+    $alerts = $query->orderBy('created_at', 'desc')
+                    ->paginate(15)
+                    ->appends($request->query());
+    return view('admin.alerts.index', compact('alerts', 'totalCount'));
   }
 
   /**

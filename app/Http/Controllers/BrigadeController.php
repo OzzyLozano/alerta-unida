@@ -9,9 +9,25 @@ class BrigadeController extends Controller {
   /**
    * Display a listing of the resource.
    */
-  public function index() {
-    $brigades = Brigade::with('trainingInfo')->get();
-    return view('admin.brigades.index', compact('brigades'));
+  public function index(Request $request) {
+    $query = Brigade::with('trainingInfo');
+
+    if ($types = $request->input('type')) {
+      $query->whereHas('trainingInfo', function($q) use ($types) {
+        foreach ((array) $types as $tipo) {
+          if ($tipo === 'evacuacion') $q->where('evacuacion', true);
+          if ($tipo === 'prevencion_combate') $q->where('prevencion_combate', true);
+          if ($tipo === 'busqueda_rescate') $q->where('busqueda_rescate', true);
+          if ($tipo === 'primeros_auxilios') $q->where('primeros_auxilios', true);
+        }
+      });
+    }
+
+    $totalCount = $query->count();
+    $brigades = $query->orderBy('created_at', 'desc')
+                      ->paginate(15)
+                      ->appends($request->query());
+    return view('admin.brigades.index', compact('brigades', 'totalCount'));
   }
 
   /**

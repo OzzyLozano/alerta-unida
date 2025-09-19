@@ -114,6 +114,10 @@ a {
   pointer-events: auto;
   z-index: 10;
 }
+.navbar-link {
+  color: white;
+  font-size: 1.1rem;
+}
 
 .api-options {
   display: flex;
@@ -189,9 +193,5 @@ a {
     pointer-events: auto;
     top: 0;
     background-color: #0000;
-  }
-  .navbar-link {
-    color: white;
-    font-size: 1.1rem;
   }
 }

@@ -169,7 +169,7 @@ a {
   margin: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .navbar {
     justify-content: space-around;
     padding: 0!important;

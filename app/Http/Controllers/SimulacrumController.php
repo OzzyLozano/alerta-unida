@@ -10,7 +10,7 @@ class SimulacrumController extends Controller {
    * Display a listing of the resource.
    */
   public function index() {
-    $simulacrums = Simulacrum::all();
+    $simulacrums = Simulacrum::paginate(15);
     return view('admin.simulacrum.index', compact('simulacrums'));
   }
 

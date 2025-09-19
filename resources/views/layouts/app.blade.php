@@ -14,5 +14,25 @@
     </main>
     @yield('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const burger = document.querySelector('.navbar-burger')
+        const menu = document.querySelector('.navbar-menu')
+        const navItems = document.querySelectorAll('.navbar-item')
+
+        burger.addEventListener('click', () => {
+          burger.classList.toggle('is-active')
+          menu.classList.toggle('is-active')
+        })
+
+        navItems.forEach(item => {
+          item.addEventListener('click', () => {
+            burger.classList.remove('is-active')
+            menu.classList.remove('is-active')
+          })
+        })
+      })
+    </script>
   </body>
 </html>

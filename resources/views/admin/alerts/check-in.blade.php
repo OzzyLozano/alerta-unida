@@ -3,7 +3,7 @@
 @section('page-title', 'Alert Check In')
 
 @section('navbar')
-  @include('components.navbar.admin')
+  @include('partials.navbar.admin')
 @endsection
 
 @section('content')

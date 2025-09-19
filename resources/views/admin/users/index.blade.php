@@ -3,7 +3,7 @@
 @section('page-title', 'Users')
 
 @section('navbar')
-  @include('components.navbar.admin')
+  @include('partials.navbar.admin')
 @endsection
 
 @section('content')

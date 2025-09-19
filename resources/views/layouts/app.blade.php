@@ -19,7 +19,7 @@
       document.addEventListener('DOMContentLoaded', () => {
         const burger = document.querySelector('.navbar-burger')
         const menu = document.querySelector('.navbar-menu')
-        const navItems = document.querySelectorAll('.navbar-item')
+        const navItems = document.querySelectorAll('.navbar-link')
 
         burger.addEventListener('click', () => {
           burger.classList.toggle('is-active')

@@ -94,7 +94,7 @@ a {
   transform: translate(-50%, 50%) rotate(-45deg);
 }
 .navbar-menu {
-  background-color: var(--blue);
+  background-color: white;
   position: fixed;
   top: var(--navbar-height);
   left: 0;
@@ -115,9 +115,8 @@ a {
   z-index: 10;
 }
 .navbar-link {
-  color: white;
+  color: var(--blue);
   font-size: 1.1rem;
-  z-index: 100;
 }
 
 .api-options {
@@ -126,6 +125,10 @@ a {
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: var(--orange);
+  
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 0.5rem;
 }
 .api-options a {
   background-color: aliceblue;
@@ -194,5 +197,9 @@ a {
     pointer-events: auto;
     top: 0;
     background-color: #0000;
+  }
+  .navbar-link {
+    color: white;
+    font-size: 1.1rem;
   }
 }

@@ -55,7 +55,7 @@ class ReportsFlutterController extends Controller {
     ], 200);
   }
   
-  public function cancelReport($id) {
+  public function cancelReport(Request $request, $id) {
     $report = Report::find($id);
 
     if (!$report) {

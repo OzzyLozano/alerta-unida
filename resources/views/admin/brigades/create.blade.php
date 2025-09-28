@@ -17,6 +17,10 @@
             <input type="text" name="lastname" id="lastname" class="form-control" required>
         </div>
         <div class="form-group mb-2">
+            <label for="phone">Teléfono:</label>
+            <input type="phone" name="phone" id="phone" class="form-control" required>
+        </div>
+        <div class="form-group mb-2">
             <label for="email">Correo:</label>
             <input type="email" name="email" id="email" class="form-control" required>
         </div>

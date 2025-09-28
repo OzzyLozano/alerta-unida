@@ -57,8 +57,12 @@ class UsersFlutterApi extends Controller {
   /**
    * Display the specified resource.
    */
-  public function show(User $user) {
-    //
+  public function getUser($id) {
+    $user = User::FindOrFail($id);
+    return response()->json([
+      'success' => true,
+      'data' => $user
+    ]);
   }
 
   /**

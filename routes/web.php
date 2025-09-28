@@ -71,7 +71,9 @@ Route::prefix('api')
   Route::get('alerts/{id}/chat', [MessagesFlutterController::class, 'chatJson']);
   // send messages flutter
   Route::post('messages/send/{id}', [MessagesFlutterController::class, 'sendMessage']);
-    
+  // get user
+  Route::get('users/get-data/{id}', [UsersFlutterApi::class, 'getUser']);
+  
   // FCM tokens
   Route::post('/fcm/token', [FcmController::class, 'storeToken']);
   Route::post('/fcm/refresh-token', [FcmController::class, 'refreshToken']);

@@ -47,6 +47,7 @@ class BrigadeController extends Controller {
       'name' => 'required',
       'lastname' => 'required',
       'email' => 'required',
+      'phone' => 'string',
       'password' => 'required',
       'training' => 'required',
       'role' => 'required',
@@ -62,6 +63,7 @@ class BrigadeController extends Controller {
     $brigade->name = $request->name;
     $brigade->lastname = $request->lastname;
     $brigade->email = $request->email;
+    $brigade->phone = $request->phone;
     $brigade->password = bcrypt($request->password);
     $brigade->role = $request->role;
     $brigade->save();

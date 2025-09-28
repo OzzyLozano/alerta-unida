@@ -46,6 +46,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nombre y Apellidos</th>
             <th scope="col">Correo</th>
+            <th scope="col">Teléfono</th>
             <th scope="col">Entrenamiento</th>
             <th scope="col">Rol</th>
           </tr>
@@ -56,6 +57,7 @@
               <th scope="row">{{ $brigade->id }}</th>
               <td>{{ $brigade->name }} {{ $brigade->lastname }}</td>
               <td>{{ $brigade->email }}</td>
+              <td>{{ $brigade->phone }}</td>
               @foreach($brigade->trainingInfo as $training)
                 <td>
                 @if($training->evacuacion)Evacuación<br>@endif

@@ -6,8 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
-  public function index() {
-    $users = User::paginate(15);
+  public function index(Request $request) {
+    $query = User::query();
+    $users = $query->orderBy('created_at', 'desc')->paginate(15);
     return view('admin.users.index', compact('users'));
   }
 
@@ -20,6 +21,7 @@ class UserController extends Controller {
     $user->name = $request->name;
     $user->lastname = $request->lastname;
     $user->email = $request->email;
+    $user->phone = $request->phone;
     $user->password = $request->password;
     $user->type = $request->type;
     $user->save();

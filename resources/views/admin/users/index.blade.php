@@ -19,6 +19,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nombre y Apellidos</th>
             <th scope="col">Correo</th>
+            <th scope="col">Teléfono</th>
             <th scope="col">Tipo</th>
           </tr>
         </thead>
@@ -28,6 +29,7 @@
               <th scope="row">{{ $user->id }}</th>
               <td>{{ $user->name }} {{ $user->lastname }}</td>
               <td>{{ $user->email }}</td>
+              <td>{{ $user->phone }}</td>
               <td>{{ $user->type }}</td>
               <td>{{ $user->email_verified_at }}</td>
             </tr>    

@@ -7,5 +7,7 @@
 @endsection
 
 @section('content')
-  <p>apis</p>
+  <section>
+    <p>apis</p>
+  </section>
 @endsection

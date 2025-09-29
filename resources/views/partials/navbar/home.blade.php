@@ -1,9 +1,7 @@
 <nav class="navbar">
-  <div class="home-logo">
-    <h1>
-      <a href="">Alerta Unida</a>
-    </h1>
-  </div>
+  <a href="{{ env('HOME_URL') . '/' }}" class="logo-container">
+    <img src="{{ asset('img/alerta_unida_isotipo.png') }}" alt="logo">
+  </a>
   
   <div class="navbar-burger">
     <span></span>

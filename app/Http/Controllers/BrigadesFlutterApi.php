@@ -26,6 +26,14 @@ class BrigadesFlutterApi extends Controller {
       ], 400);
     }
   }
+  
+  public function getBrigadeMember($id) {
+    $brigade = Brigade::with('traininginfo')->findOrFail($id);
+    return response()->json([
+      'success' => true,
+      'data' => $brigade
+    ]);
+  }
 
   /**
    * Store a newly created resource in storage.

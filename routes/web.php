@@ -73,6 +73,8 @@ Route::prefix('api')
   Route::post('messages/send/{id}', [MessagesFlutterController::class, 'sendMessage']);
   // get user
   Route::get('users/get-data/{id}', [UsersFlutterApi::class, 'getUser']);
+  // get brigade
+  Route::get('brigades/get-data/{id}', [BrigadesFlutterApi::class, 'getBrigadeMember']);
   
   // FCM tokens
   Route::post('/fcm/token', [FcmController::class, 'storeToken']);

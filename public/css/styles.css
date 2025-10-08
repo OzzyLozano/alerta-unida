@@ -55,7 +55,7 @@ section {
   background-color: var(--background-color);
   border-radius: 50%;
 }
-.logo-container img {
+.logo-container svg {
   position: relative;
   left: -2rem;
   width: var(--navbar-height);

@@ -58,7 +58,8 @@ class ReportsController extends Controller {
     $imgUrl = null;
     if ($request->hasFile('img')) {
       $file = $request->file('img');
-      $imgPath = Storage::disk('r2')->putFile('', $file);
+      $fileName = time() . '_' . $file->getClientOriginalName();
+      $imgPath = Storage::disk('r2')->putFile('', $file, $fileName);
 
       dd($imgPath, $file->getClientOriginalName());
 

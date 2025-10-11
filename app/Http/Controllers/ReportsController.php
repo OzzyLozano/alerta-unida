@@ -55,9 +55,16 @@ class ReportsController extends Controller {
       'brigadist_id' => 'nullable|exists:brigade,id',
     ]);
 
+    $imgUrl = null;
     if ($request->hasFile('img')) {
       $file = $request->file('img');
       $imgPath = Storage::disk('r2')->putFile('images/reports', $file);
+
+      dd($imgPath, $file->getClientOriginalName());
+      
+      if (!$imgPath) {
+        return back()->withErrors(['img' => 'No se pudo subir el archivo']);
+      }
       $imgUrl = Storage::disk('r2')->url($imgPath);
     } else {
       return back()->withErrors(['img' => 'Archivo no recibido']);

@@ -58,10 +58,10 @@ class ReportsController extends Controller {
     $imgUrl = null;
     if ($request->hasFile('img')) {
       $file = $request->file('img');
-      $imgPath = Storage::disk('r2')->putFile('images/reports', $file);
+      $imgPath = Storage::disk('r2')->putFile('', $file);
 
       dd($imgPath, $file->getClientOriginalName());
-      
+
       if (!$imgPath) {
         return back()->withErrors(['img' => 'No se pudo subir el archivo']);
       }

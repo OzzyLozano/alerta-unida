@@ -85,7 +85,7 @@ class ReportsFlutterController extends Controller {
         'user_id' => 'required|integer|exists:users,id'
       ]);
 
-      $imgPath = $request->file('img')->store('images/reports', 'public');
+      $imgPath = $request->file('img')->store('images/reports', 'r2');
 
       $report = Report::create([
         'title' => $request->input('title'),

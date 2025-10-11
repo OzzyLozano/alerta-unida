@@ -55,7 +55,7 @@ class ReportsController extends Controller {
       'brigadist_id' => 'nullable|exists:brigade,id',
     ]);
 
-    $imgPath = $request->file('img')->store('images/reports', 'public');
+    $imgPath = $request->file('img')->store('images/reports', 'r2');
 
     $report = Report::create([
       'title' => $validated['title'],

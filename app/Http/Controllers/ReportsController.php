@@ -56,11 +56,12 @@ class ReportsController extends Controller {
     ]);
 
     $imgPath = $request->file('img')->store('images/reports', 'r2');
+    $imgUrl = Storage::disk('r2')->url($imgPath);
 
     $report = Report::create([
       'title' => $validated['title'],
       'description' => $validated['description'],
-      'img_path' => $imgPath,
+      'img_path' => $imgUrl,
       'status' => $validated['status'],
       'user_id' => $validated['user_id'],
       'brigadist_id' => $validated['brigadist_id'] ?? null,

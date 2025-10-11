@@ -36,7 +36,6 @@ class ReportsController extends Controller {
    * Show the form for creating a new resource.
    */
   public function create() {
-    
     $users = User::all();
     $brigadists = Brigade::all();
         
@@ -56,8 +55,13 @@ class ReportsController extends Controller {
       'brigadist_id' => 'nullable|exists:brigade,id',
     ]);
 
-    $imgPath = $request->file('img')->store('images/reports', 'r2');
-    $imgUrl = Storage::disk('r2')->url($imgPath);
+    if ($request->hasFile('img')) {
+      $file = $request->file('img');
+      $imgPath = Storage::disk('r2')->putFile('images/reports', $file);
+      $imgUrl = Storage::disk('r2')->url($imgPath);
+    } else {
+      return back()->withErrors(['img' => 'Archivo no recibido']);
+    }
 
     $report = Report::create([
       'title' => $validated['title'],

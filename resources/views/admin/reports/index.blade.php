@@ -63,7 +63,7 @@
                 <td>{{ $report->brigadist_id ?? "en espera" }}</td>
                 <td>
                   @if($report->img_path)
-                    <img src="{{ $report->img_path) }}" alt="Imagen del reporte" style="width: 100px; height: auto;">
+                    <img src="{{ $report->img_path }}" alt="Imagen del reporte" style="width: 100px; height: auto;">
                   @else
                     No disponible
                   @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use App\Models\Alerts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ReportsFlutterController extends Controller {
   public function getOnWaitReports() {

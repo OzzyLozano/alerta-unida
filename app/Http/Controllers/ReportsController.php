@@ -6,6 +6,7 @@ use App\Models\Report;
 use App\Models\User;
 use App\Models\Brigade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ReportsController extends Controller {
   /**

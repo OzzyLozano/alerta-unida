@@ -54,6 +54,7 @@ return [
             'region' => env('R2_DEFAULT_REGION', 'auto'),
             'bucket' => env('R2_BUCKET'),
             'endpoint' => env('R2_ENDPOINT'),
+            'url' => env('R2_URL'),
             'use_path_style_endpoint' => env('R2_USE_PATH_STYLE_ENDPOINT', true),
             'throw' => false,
             'report' => false,

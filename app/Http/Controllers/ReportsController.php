@@ -61,8 +61,6 @@ class ReportsController extends Controller {
       $fileName = time() . '_' . $file->getClientOriginalName();
       $imgPath = Storage::disk('r2')->putFileAs('reports/', $file, $fileName);
 
-      dd($imgPath, $file->getClientOriginalName());
-
       if (!$imgPath) {
         return back()->withErrors(['img' => 'No se pudo subir el archivo']);
       }

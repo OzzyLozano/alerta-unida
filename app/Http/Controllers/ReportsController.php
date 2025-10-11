@@ -59,12 +59,16 @@ class ReportsController extends Controller {
     if ($request->hasFile('img')) {
       $file = $request->file('img');
       $fileName = time() . '_' . $file->getClientOriginalName();
-      $imgPath = Storage::disk('r2')->putFileAs('reports/', $file, $fileName);
+      $imgPath = Storage::disk('r2')->putFileAs('reports', $file, $fileName);
 
-      if (!$imgPath) {
-        return back()->withErrors(['img' => 'No se pudo subir el archivo']);
+      if (!empty($imgPath)) {
+        $imgUrl = Storage::disk('r2')->url($imgPath);
+      } else {
+        return back()->withErrors(['img' => 'No se pudo generar la URL del archivo']);
       }
-      $imgUrl = Storage::disk('r2')->url($imgPath);
+
+
+      \Log::info('Archivo subido a R2: '.$imgPath);
     } else {
       return back()->withErrors(['img' => 'Archivo no recibido']);
     }

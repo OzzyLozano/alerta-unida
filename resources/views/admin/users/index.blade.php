@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('page-title', 'Users')
 
@@ -18,10 +18,11 @@
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Nombre y Apellidos</th>
+              <th scope="col">Nombre Completo</th>
               <th scope="col">Correo</th>
               <th scope="col">Teléfono</th>
               <th scope="col">Tipo</th>
+              <th scope="col">Fecha Verificación Correo</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">

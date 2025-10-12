@@ -1,0 +1,61 @@
+.admin-container {
+  display: flex;
+  height: calc(100dvh - var(--navbar-height));
+}
+.side-panel {
+  width: 16rem;
+  background-color: var(--blue);
+  margin: 1rem;
+  height: calc(100vh - var(--navbar-height) - 2rem);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+.side-panel a {
+  font-size: 1.2rem;
+}
+
+main {
+  max-width: calc(100% - 20rem);
+  max-height: calc(100dvh - var(--navbar-height) - 2rem);
+  margin: 1rem 1rem;
+  overflow-y: auto;
+}
+
+.api-options {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--orange);
+  
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 0.5rem;
+}
+.api-options::-webkit-scrollbar {
+  height: 0.5rem;
+}
+.api-options::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
+.api-options a {
+  background-color: aliceblue;
+  color: black;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.api-options p {
+  margin-bottom: 0!important;
+}
+.filter-options {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.filter-options input {
+  background-color: aliceblue;
+  color: black;
+  padding: 0.25rem 0.5rem;
+}

@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('page-title', 'Create Brigade')
+
+@section('navbar')
+  @include('partials.navbar.admin')
+@endsection
 
 @section('content')
   <h1>Agrega un Brigadista</h1>

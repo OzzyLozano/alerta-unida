@@ -21,21 +21,12 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 main {
-  min-height: calc(100dvh - var(--navbar-height));
   display: flex;
   flex-direction: column;
 }
 a {
   text-decoration: none;
   color: white;
-}
-
-section {
-  width: calc(100% - 2rem);
-  height: calc(100dvh - var(--navbar-height) - 2rem);
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
 }
 
 .navbar {
@@ -123,78 +114,7 @@ section {
   font-size: 1.1rem;
 }
 
-.api-options {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: var(--orange);
-  
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: 0.5rem;
-}
-.api-options::-webkit-scrollbar {
-  height: 0.5rem;
-}
-.api-options::-webkit-scrollbar-thumb {
-  background: var(--blue);
-  border-radius: 0.25rem;
-}
-.api-options a {
-  background-color: aliceblue;
-  color: black;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-}
-.api-options p {
-  margin-bottom: 0!important;
-}
-.filter-options {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.filter-options input {
-  background-color: aliceblue;
-  color: black;
-  padding: 0.25rem 0.5rem;
-}
-
-.btn-primary {
-  background-color: var(--green)!important;
-  border: none;
-}
-.paginator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-}
-.paginator-pages {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.paginator-pages a {
-  padding: 0.25rem 0.75rem;
-  border: 1px solid gray;
-  border-radius: 0.25rem;
-}
-.current-page {
-  text-decoration: underline;
-}
-.paginator-results p {
-  margin: 0;
-}
-
 @media (min-width: 48rem) {
-  section {
-    width: calc(100% - 4rem);
-    height: calc(100dvh - var(--navbar-height) - 4rem);
-    margin: 2rem;
-    padding: 2rem;
-  }
   .navbar {
     background: linear-gradient(
       to right,

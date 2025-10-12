@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('page-title', 'Create User')
+
+@section('navbar')
+  @include('partials.navbar.admin')
+@endsection
 
 @section('content')
   <h1>Crear una Usuario</h1>

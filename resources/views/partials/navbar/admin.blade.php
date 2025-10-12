@@ -15,10 +15,8 @@
   </div>
 
   <div class="navbar-menu">
-    <a href="{{ route('admin.alerts.index') }}" class="navbar-link">Alertas</a>
-    <a href="{{ route('admin.users.index') }}" class="navbar-link">Usuarios</a>
-    <a href="{{ route('admin.brigades.index') }}" class="navbar-link">Brigadistas</a>
-    <a href="{{ route('admin.simulacrums.index') }}" class="navbar-link">Simulacros</a>
-    <a href="{{ route('admin.reports.index') }}" class="navbar-link">Reportes</a>
+    <a href="{{ env('HOME_URL') . '/admin' }}" class="navbar-link">
+      Cerrar Sesión <span>(próximamente)</span>
+    </a>
   </div>
 </nav>

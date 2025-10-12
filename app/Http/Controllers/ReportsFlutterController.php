@@ -86,8 +86,36 @@ class ReportsFlutterController extends Controller {
         'user_id' => 'required|integer|exists:users,id'
       ]);
 
-      $imgPath = $request->file('img')->store('images/reports', 'r2');
-      $imgUrl = Storage::disk('r2')->url($imgPath);
+      $imgUrl = null;
+      try {
+        if ($request->hasFile('img')) {
+          $file = $request->file('img');
+          $fileName = time() . '_' . $file->getClientOriginalName();
+          $imgPath = Storage::disk('r2')->putFileAs('reports', $file, $fileName);
+        } else {
+          \Log::info('No se encontro el archivo o es invalido: ' . $file->getClientOriginalName());
+        }
+        try {
+          if (!empty($imgPath)) {
+            $imgUrl = Storage::disk('r2')->url($imgPath);
+            \Log::info('Archivo subido a R2: ' . $imgPath);
+          } else {
+            \Log::info('No se encontro una ruta para el archivo: ' . $imgPath);
+          }
+        } catch (\Exception $exception) {
+          return response()->json([
+            'success' => false,
+            'message' => 'Error al procesar el reporte',
+            'error' => $exception->getMessage()
+          ], 400);
+        }
+      } catch (\Exception $exception) {
+        return response()->json([
+          'success' => false,
+          'message' => 'Error al procesar el reporte',
+          'error' => $exception->getMessage()
+        ], 400);
+      }
 
       $report = Report::create([
         'title' => $request->input('title'),

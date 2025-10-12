@@ -67,7 +67,6 @@ class ReportsController extends Controller {
         return back()->withErrors(['img' => 'No se pudo generar la URL del archivo']);
       }
 
-
       \Log::info('Archivo subido a R2: '.$imgPath);
     } else {
       return back()->withErrors(['img' => 'Archivo no recibido']);

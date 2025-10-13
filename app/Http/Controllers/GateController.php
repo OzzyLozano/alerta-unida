@@ -103,8 +103,8 @@ class GateController extends Controller {
     }
 
     // Guardar la relación many-to-many
-$equipmentData = $request->input('equipments', []);
-$syncData = [];
+    $equipmentData = $request->input('equipments', []);
+    $syncData = [];
 
     foreach($equipmentData as $equipmentId => $data) {
       if(isset($data['selected'])) {

@@ -51,6 +51,22 @@
       </div>
 
       <div class="form-group mb-2">
+        <label for="latitude">Latitud</label>
+        <input type="number" step="0.0000000001" name="latitude" id="latitude" class="form-control" value="{{ $gate->latitude }}" required>
+        @error('latitude')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="form-group mb-2">
+        <label for="longitude">Longitud</label>
+        <input type="number" step="0.0000000001" name="longitude" id="longitude" class="form-control" value="{{ $gate->longitude }}" required>
+        @error('longitude')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="form-group mb-2">
         <label for="img">Imagen</label>
         <input type="file" name="img" id="img" class="form-control">
         @error('img')

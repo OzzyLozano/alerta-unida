@@ -102,21 +102,21 @@ class GateController extends Controller {
       \Log::info('Archivo subido a R2: ' . $imgPath);
     }
 
-    // Guardar la relación many-to-many
+    // Guardar la relación equipment_gate
+    $gate->equipments()->detach();
     $equipmentData = $request->input('equipments', []);
-    $syncData = [];
-
-    foreach($equipmentData as $equipmentId => $data) {
-      if(isset($data['selected'])) {
-        $syncData[$equipmentId] = [
-          'latitude' => $data['latitude'] ?? 0,
-          'longitude' => $data['longitude'] ?? 0,
-          'created_at' => now(),
-          'updated_at' => now(),
-        ];
+    foreach($equipmentData as $equipmentId => $entries) {
+      foreach($entries as $entry) {
+        if(isset($entry['selected'])) {
+          $gate->equipments()->attach($equipmentId, [
+            'latitude' => $entry['latitude'] ?? 0,
+            'longitude' => $entry['longitude'] ?? 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+          ]);
+        }
       }
     }
-    $gate->equipments()->sync($syncData);
 
     $gate->save();
 

@@ -20,11 +20,11 @@
   <div class="m-4">
     <h2>{{ $equipment->description }}</h2>
     <img src="{{ $equipment->img_path }}" alt="img.jpg">
-    <!-- <a href="{{ route('admin.map.equipment.edit', $equipment->id) }}" class="btn btn-secondary">Edit</a> -->
-    <!-- <form action="{{ route('admin.map.equipment.destroy', $equipment->id) }}" method="equipment" style="display:inline;">
+    <a href="{{ route('admin.map.equipment.edit', $equipment->id) }}" class="btn btn-secondary">Edit</a>
+    <form action="{{ route('admin.map.equipment.destroy', $equipment->id) }}" method="equipment" style="display:inline;">
       @csrf
       @method('DELETE')
       <button type="submit" class="btn btn-danger">Delete</button>
-    </form> -->
+    </form>
   </div>
 @endsection

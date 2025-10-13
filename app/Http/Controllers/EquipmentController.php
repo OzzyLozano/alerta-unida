@@ -93,6 +93,7 @@ class EquipmentController extends Controller {
       
       if (!empty($imgPath)) {
         $imgUrl = Storage::disk('r2')->url($imgPath);
+        $equipment->img_path = $imgUrl;
         if (!empty($equipment->img_path)) {
           $oldPath = str_replace(Storage::disk('r2')->url(''), '', $equipment->img_path);
           Storage::disk('r2')->delete($oldPath);

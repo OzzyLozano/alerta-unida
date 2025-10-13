@@ -60,28 +60,61 @@ class EquipmentController extends Controller {
   /**
    * Display the specified resource.
    */
-  public function show(Equipment $equipment) {
-    
+  public function show($id) {
+    $equipment = Equipment::findOrFail($id);
+    return view('admin.map.equipment.show', compact('equipment'));
   }
 
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Equipment $equipment) {
-    
+  public function edit($id) {
+    $equipment = Equipment::findOrFail($id);
+    return view('admin.blogs.edit', compact('post'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Equipment $equipment) {
+  public function update(Request $request, $id) {
+    $equipment = Equipment::findOrFail($id);
     
+    $validated = $request->validate([
+      'description' => 'string',
+      'img' => 'image|mimes:jpeg,png,jpg,gif',
+    ]);
+
+    $equipment->description = $validated->description;
+    
+    if ($request->hasFile('img')) {
+      $file = $request->file('img');
+      $fileName = time() . '_' . $file->getClientOriginalName();
+      $imgPath = Storage::disk('r2')->putFileAs('map/equipment', $file, $fileName);
+      
+      if (!empty($imgPath)) {
+        $imgUrl = Storage::disk('r2')->url($imgPath);
+        Storage::disk('r2')->delete($equipment->img_path);
+      } else {
+        return back()->withErrors(['img' => 'No se pudo generar la URL del nuevo archivo, no se cambió la imagen.']);
+      }
+
+      \Log::info('Archivo subido a R2: ' . $imgPath);
+    } else {
+      return back()->withErrors(['img' => 'Archivo no recibido']);
+    }
+    $equipment->save();
+
+    return redirect()->route('blogs.index');
   }
 
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Equipment $equipment) {
-    
+  public function destroy($id) {
+    $equipment = Equipment::findOrFail($id);
+    $equipment->delete();
+    Storage::disk('r2')->delete($equipment->img_path);
+
+    return redirect()->route('admin.map.equipment.index');
   }
 }

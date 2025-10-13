@@ -1,8 +1,9 @@
 main {
+  position: relative;
+  left: 18rem;
   width: calc(100% - 20rem);
   max-height: calc(100dvh - var(--navbar-height) - 2rem);
   margin: 1rem 1rem;
-  overflow-y: auto;
 }
 a {
   color: black;
@@ -13,6 +14,8 @@ a {
   height: calc(100dvh - var(--navbar-height));
 }
 .side-panel {
+  position: fixed;
+  top: var(--navbar-height);
   width: 16rem;
   background-color: var(--blue);
   margin: 1rem;

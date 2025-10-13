@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AlertsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrigadeController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\SimulacrumController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\FcmController;
+use App\Http\Controllers\EquipmentController;
 
 use App\Http\Controllers\AlertsFlutterApi;
 use App\Http\Controllers\BrigadesFlutterApi;
@@ -36,18 +36,25 @@ Route::prefix('admin')
 ->name('admin.')
 ->group(function() {
   Route::resource('alerts', AlertsController::class);
-  Route::resource('controller', ApiController::class);
   Route::resource('users', UserController::class);
   Route::resource('brigades', BrigadeController::class);
   Route::resource('simulacrums', SimulacrumController::class);
   Route::resource('reports', ReportsController::class);
   Route::resource('messages', MessagesController::class);
 
+  // customs
   Route::get('alerts/{alert}/chat', [AlertsController::class, 'chat'])->name('alerts.chat');
   Route::get('fcm', [FcmController::class, 'index'])->name('fcm.index');
   Route::delete('fcm/delete/{id}', [FcmController::class, 'destroy'])->name('fcm.destroy');
-
   Route::get('alerts/{alert}/check-in', [AlertsController::class, 'checkIn'])->name('alerts.checkin');
+
+  // map databasee management
+  Route::prefix('map')->name('map.')->group(function() {
+    Route::get('/', function () {
+      return view('admin.map.index');
+    })->name('index');
+    Route::resource('equipment', EquipmentController::class);
+  });
 });
 
 Route::get('/api', function () {

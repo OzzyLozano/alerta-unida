@@ -14,7 +14,6 @@ class Report extends Model {
     'brigadist_id',
   ];
   
-  
   public function user() {
     return $this->belongsTo(User::class);
   }

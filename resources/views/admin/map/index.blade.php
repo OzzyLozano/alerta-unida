@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Admin')
+@section('page-title', 'Maps')
 
 @section('navbar')
   @include('partials.navbar.admin')
@@ -8,6 +8,7 @@
 
 @section('content')
   <section>
-    <p>admin</p>
+    <h1>Mapa</h1>
+    @include('partials.panel.map-options')
   </section>
 @endsection

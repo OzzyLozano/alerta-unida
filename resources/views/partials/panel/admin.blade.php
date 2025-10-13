@@ -4,4 +4,5 @@
   <a href="{{ route('admin.brigades.index') }}">Brigadistas</a>
   <a href="{{ route('admin.simulacrums.index') }}">Simulacros</a>
   <a href="{{ route('admin.reports.index') }}">Reportes</a>
+  <a href="{{ route('admin.map.index') }}">Mapa</a>
 </aside>

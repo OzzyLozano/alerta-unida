@@ -24,6 +24,9 @@ class Brigade extends Authenticatable {
   public function reports() {
     return $this->hasMany(Report::class);
   }
+  public function alerts() {
+    return $this->hasMany(Alerts::class);
+  }
   public function messages() {
     return $this->hasMany(Message::class, 'brigade_id');
   }

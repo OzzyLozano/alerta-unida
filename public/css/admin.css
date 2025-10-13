@@ -1,3 +1,10 @@
+main {
+  max-width: calc(100% - 20rem);
+  max-height: calc(100dvh - var(--navbar-height) - 2rem);
+  margin: 1rem 1rem;
+  overflow-y: auto;
+}
+
 .admin-container {
   display: flex;
   height: calc(100dvh - var(--navbar-height));
@@ -14,13 +21,6 @@
 }
 .side-panel a {
   font-size: 1.2rem;
-}
-
-main {
-  max-width: calc(100% - 20rem);
-  max-height: calc(100dvh - var(--navbar-height) - 2rem);
-  margin: 1rem 1rem;
-  overflow-y: auto;
 }
 
 .api-options {
@@ -41,10 +41,8 @@ main {
   border-radius: 0.25rem;
 }
 .api-options a {
-  background-color: aliceblue;
   color: black;
   padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
 }
 .api-options p {
   margin-bottom: 0!important;
@@ -58,4 +56,33 @@ main {
   background-color: aliceblue;
   color: black;
   padding: 0.25rem 0.5rem;
+}
+
+.create a {
+  background-color: var(--blue);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.paginator-pages {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.paginator-pages a {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid gray;
+  border-radius: 0.25rem;
+}
+.current-page {
+  text-decoration: underline;
+}
+.paginator-results p {
+  margin: 0;
 }

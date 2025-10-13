@@ -17,6 +17,41 @@
     <h1>Equipment Id: {{ $gate->id }}</h1>
   </div>
 
+  <h2>Equipamiento relacionado</h2>
+  @if($gate->equipments->isEmpty())
+    <p>No hay equipamiento asignado a esta portería.</p>
+  @else
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Descripción</th>
+          <th>Coordenadas</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($gate->equipments as $equipment)
+          <tr>
+            <td>{{ $equipment->id }}</td>
+            <td>{{ $equipment->description }}</td>
+            <td>
+              {{ $equipment->pivot->latitude }}<br>
+              {{ $equipment->pivot->longitude }}
+            </td>
+            <td>
+              @if($equipment->img_path)
+                <img src="{{ $equipment->img_path }}" alt="Imagen" style="width:100px; height:auto;">
+              @else
+                No disponible
+              @endif
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  @endif
+
   <div class="m-4">
     <h2>{{ $gate->description }}</h2>
     <img src="{{ $gate->img_path }}" alt="img.jpg" style="width: 400px; height: auto;">

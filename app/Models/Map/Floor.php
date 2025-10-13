@@ -10,7 +10,7 @@ class Floor extends Model {
     'building_id',
   ];
 
-  public function equipment() {
+  public function equipments() {
     return $this->belongsToMany(Equipment::class, 'equipment_floor', 'floor_id', 'equipment_id');
   }
   public function building() {

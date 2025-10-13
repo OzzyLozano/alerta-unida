@@ -12,7 +12,7 @@ class Gate extends Model {
     'img_path',
   ];
 
-  public function equipment() {
+  public function equipments() {
     return $this->belongsToMany(Equipment::class, 'equipment_gate', 'gate_id', 'equipment_id');
   }
 }

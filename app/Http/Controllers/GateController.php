@@ -56,13 +56,14 @@ class GateController extends Controller {
   }
 
   public function show($id) {
-    $gate = Gate::findOrFail($id);
+    $gate = Gate::with('equipments')->findOrFail($id);
     return view('admin.map.gate.show', compact('gate'));
   }
 
   public function edit($id) {
-    $gate = Gate::findOrFail($id);
-    return view('admin.map.gate.edit', compact('gate'));
+    $gate = Gate::with('equipments')->findOrFail($id);
+    $equipments = \App\Models\Map\Equipment::all();
+    return view('admin.map.gate.edit', compact('gate', 'equipments'));
   }
 
   public function update(Request $request, $id) {
@@ -100,6 +101,23 @@ class GateController extends Controller {
 
       \Log::info('Archivo subido a R2: ' . $imgPath);
     }
+
+    // Guardar la relación many-to-many
+$equipmentData = $request->input('equipments', []);
+$syncData = [];
+
+    foreach($equipmentData as $equipmentId => $data) {
+      if(isset($data['selected'])) {
+        $syncData[$equipmentId] = [
+          'latitude' => $data['latitude'] ?? 0,
+          'longitude' => $data['longitude'] ?? 0,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ];
+      }
+    }
+    $gate->equipments()->sync($syncData);
+
     $gate->save();
 
     return redirect()->route('admin.map.gate.index');

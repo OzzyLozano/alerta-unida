@@ -11,7 +11,7 @@ class Floor extends Model {
   ];
 
   public function equipments() {
-    return $this->belongsToMany(Equipment::class, 'equipment_floor', 'floor_id', 'equipment_id');
+    return $this->belongsToMany(Equipment::class, 'equipment_floor', 'floor_id', 'equipment_id')->withPivot('latitude', 'longitude');
   }
   public function building() {
     return $this->belongsTo(Building::class);

@@ -84,7 +84,7 @@ class EquipmentController extends Controller {
       'img' => 'image|mimes:jpeg,png,jpg,gif',
     ]);
 
-    $equipment->description = $validated->description;
+    $equipment->description = $validated['description'];
     
     if ($request->hasFile('img')) {
       $file = $request->file('img');
@@ -93,9 +93,11 @@ class EquipmentController extends Controller {
       
       if (!empty($imgPath)) {
         $imgUrl = Storage::disk('r2')->url($imgPath);
-        Storage::disk('r2')->delete($equipment->img_path);
+        if (!empty($equipment->img_path)) {
+          Storage::disk('r2')->delete($equipment->img_path);
+        }
       } else {
-        return back()->withErrors(['img' => 'No se pudo generar la URL del nuevo archivo, no se cambió la imagen.']);
+        return back()->withErrors(['img' => 'No se pudo generar la URL del nuevo archivo.']);
       }
 
       \Log::info('Archivo subido a R2: ' . $imgPath);

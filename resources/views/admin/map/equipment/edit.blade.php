@@ -10,8 +10,9 @@
   <div class="container">
     <h1>Editar Equipo {{ $equipment->id }}</h1>
     
-    <form action="{{ route('admin.map.equipment.update') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.map.equipment.update', $equipment->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
 
       <div class="form-group">
         <label for="description">Descripción</label>

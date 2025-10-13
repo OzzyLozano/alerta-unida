@@ -56,6 +56,8 @@ Route::prefix('admin')
     })->name('index');
     Route::resource('equipment', EquipmentController::class);
     Route::resource('gate', GateController::class);
+    Route::get('/gate/{id}/add-equipment', [GateController::class, 'addEquipment'])->name('gate.add.equipment');
+    Route::post('/gate/{id}/submit-equipment', [GateController::class, 'submitEquipment'])->name('gate.submit.equipment');
   });
 });
 

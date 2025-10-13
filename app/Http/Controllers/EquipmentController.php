@@ -16,16 +16,10 @@ class EquipmentController extends Controller {
     return view('admin.map.equipment.index', compact('equipment', 'totalCount'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   */
   public function create() {
     return view('admin.map.equipment.create');
   }
 
-  /**
-   * Store a newly created resource in storage.
-   */
   public function store(Request $request) {
     $validated = $request->validate([
       'description' => 'required|string',
@@ -48,34 +42,27 @@ class EquipmentController extends Controller {
     } else {
       return back()->withErrors(['img' => 'Archivo no recibido']);
     }
+    // $imgPath = $request->file('img')->store('images/map/equipment', 'public');
 
     $report = Equipment::create([
       'description' => $validated['description'],
       'img_path' => $imgUrl,
+      // 'img_path' => $imgPath,
     ]);
 
     return redirect()->route('admin.map.equipment.index')->with('success', 'Unidad creada exitosamente');
   }
 
-  /**
-   * Display the specified resource.
-   */
   public function show($id) {
     $equipment = Equipment::findOrFail($id);
     return view('admin.map.equipment.show', compact('equipment'));
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   */
   public function edit($id) {
     $equipment = Equipment::findOrFail($id);
     return view('admin.map.equipment.edit', compact('equipment'));
   }
 
-  /**
-   * Update the specified resource in storage.
-   */
   public function update(Request $request, $id) {
     $equipment = Equipment::findOrFail($id);
     
@@ -107,14 +94,13 @@ class EquipmentController extends Controller {
 
       \Log::info('Archivo subido a R2: ' . $imgPath);
     }
+    // $imgPath = $request->file('img')->store('images/map/equipment', 'public');
+    // $equipment->img_path = $imgPath;
     $equipment->save();
 
     return redirect()->route('admin.map.equipment.index');
   }
 
-  /**
-   * Remove the specified resource from storage.
-   */
   public function destroy($id) {
     $equipment = Equipment::findOrFail($id);
     $equipment->delete();

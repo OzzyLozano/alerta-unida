@@ -28,6 +28,7 @@ class GateController extends Controller {
       'img' => 'required|image|mimes:jpeg,png,jpg,gif',
     ]);
 
+    // $imgPath = $request->file('img')->store('images/map/gate', 'public');
     $imgUrl = null;
     if ($request->hasFile('img')) {
       $file = $request->file('img');
@@ -49,7 +50,7 @@ class GateController extends Controller {
       'description' => $validated['description'],
       'latitude' => $validated['latitude'],
       'longitude' => $validated['longitude'],
-      'img_path' => $imgUrl,
+      'img_path' => $imgPath,
     ]);
 
     return redirect()->route('admin.map.gate.index')->with('success', 'Unidad creada exitosamente');
@@ -101,22 +102,10 @@ class GateController extends Controller {
 
       \Log::info('Archivo subido a R2: ' . $imgPath);
     }
-
-    // Guardar la relación equipment_gate
-    $gate->equipments()->detach();
-    $equipmentData = $request->input('equipments', []);
-    foreach($equipmentData as $equipmentId => $entries) {
-      foreach($entries as $entry) {
-        if(isset($entry['selected'])) {
-          $gate->equipments()->attach($equipmentId, [
-            'latitude' => $entry['latitude'] ?? 0,
-            'longitude' => $entry['longitude'] ?? 0,
-            'created_at' => now(),
-            'updated_at' => now(),
-          ]);
-        }
-      }
-    }
+    // if ($request->hasFile('img')) {
+    //   $imgPath = $request->file('img')->store('images/map/gate', 'public');
+    //   $gate->img_path = $imgPath;
+    // }
 
     $gate->save();
 
@@ -129,5 +118,42 @@ class GateController extends Controller {
     Storage::disk('r2')->delete($gate->img_path);
 
     return redirect()->route('admin.map.gate.index');
+  }
+
+  // custom
+  public function addEquipment($id) {
+    $gate = Gate::with('equipments')->findOrFail($id);
+    $equipments = \App\Models\Map\Equipment::all();
+    return view('admin.map.gate.add.equipment', compact('gate', 'equipments'));
+  }
+
+  public function submitEquipment(Request $request, $id) {
+    $gate = Gate::findOrFail($id);
+
+    $validated = $request->validate([
+      'equipments_ids.*' => 'required|exists:equipments,id',
+      'equipments_latitude.*' => 'required|numeric|between:-90,90',
+      'equipments_longitude.*' => 'required|numeric|between:-180,180',
+    ]);
+    
+    // Guardar equipamientos
+    $equipmentIds = $request->input('equipments_ids', []);
+    $latitudes = $request->input('equipments_latitude', []);
+    $longitudes = $request->input('equipments_longitude', []);
+
+    foreach ($equipmentIds as $index => $equipmentId) {
+      if ($equipmentId) {
+        $gate->equipments()->attach($equipmentId, [
+          'latitude' => $latitudes[$index] ?? 0,
+          'longitude' => $longitudes[$index] ?? 0,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ]);
+      }
+    }
+
+    $gate->save();
+
+    return redirect()->route('admin.map.gate.index')->with('success', 'Portería actualizada correctamente.');
   }
 }

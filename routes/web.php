@@ -9,6 +9,7 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\FcmController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\GateController;
 
 use App\Http\Controllers\AlertsFlutterApi;
 use App\Http\Controllers\BrigadesFlutterApi;
@@ -54,6 +55,7 @@ Route::prefix('admin')
       return view('admin.map.index');
     })->name('index');
     Route::resource('equipment', EquipmentController::class);
+    Route::resource('gate', GateController::class);
   });
 });
 

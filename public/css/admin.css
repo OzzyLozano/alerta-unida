@@ -1,5 +1,5 @@
 main {
-  max-width: calc(100% - 20rem);
+  width: calc(100% - 20rem);
   max-height: calc(100dvh - var(--navbar-height) - 2rem);
   margin: 1rem 1rem;
   overflow-y: auto;

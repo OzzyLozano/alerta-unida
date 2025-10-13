@@ -93,11 +93,13 @@ class EquipmentController extends Controller {
       
       if (!empty($imgPath)) {
         $imgUrl = Storage::disk('r2')->url($imgPath);
-        if (!empty($equipment->img_path)) {
-          $oldPath = str_replace(Storage::disk('r2')->url(''), '', $equipment->img_path);
-          Storage::disk('r2')->delete($oldPath);
+
+        $oldUrl = $equipment->img_path;
+        $equipment->img_path = $imgUrl;
+        if (!empty($oldUrl)) {
+          $oldPath = str_replace(Storage::disk('r2')->url(''), '', $oldUrl);
+          $deleted = Storage::disk('r2')->delete($oldPath);
           \Log::info('Imagen eliminada: ' . $oldPath);
-          $equipment->img_path = $imgUrl;
         }
       } else {
         return back()->withErrors(['img' => 'No se pudo generar la URL del nuevo archivo.']);

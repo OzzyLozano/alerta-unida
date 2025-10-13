@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'Equipamiento')
+@section('page-title', 'Equipamiento')
 
 @section('navbar')
-  @include('components.navbar.admin')
+  @include('partials.navbar.admin')
 @endsection
 
 @section('content')

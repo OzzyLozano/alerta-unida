@@ -4,6 +4,9 @@ main {
   margin: 1rem 1rem;
   overflow-y: auto;
 }
+a {
+  color: black;
+}
 
 .admin-container {
   display: flex;
@@ -21,6 +24,7 @@ main {
 }
 .side-panel a {
   font-size: 1.2rem;
+  color: white;
 }
 
 .api-options {
@@ -41,7 +45,6 @@ main {
   border-radius: 0.25rem;
 }
 .api-options a {
-  color: black;
   padding: 0.25rem 0.5rem;
 }
 .api-options p {

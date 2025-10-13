@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Map\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GateController extends Controller {
   public function index() {

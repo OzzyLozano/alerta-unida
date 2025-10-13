@@ -101,8 +101,6 @@ class EquipmentController extends Controller {
       }
 
       \Log::info('Archivo subido a R2: ' . $imgPath);
-    } else {
-      return back()->withErrors(['img' => 'Archivo no recibido']);
     }
     $equipment->save();
 

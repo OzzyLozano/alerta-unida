@@ -12,7 +12,8 @@ class GateController extends Controller {
 
     $totalCount = $query->count();
     $gate = $query->orderBy('created_at', 'desc')
-                      ->paginate(15);
+                  ->withPivot('latitude', 'longitude')
+                  ->paginate(15);
     return view('admin.map.gate.index', compact('gate', 'totalCount'));
   }
 

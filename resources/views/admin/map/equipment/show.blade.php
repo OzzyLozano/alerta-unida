@@ -19,7 +19,7 @@
 
   <div class="m-4">
     <h2>{{ $equipment->description }}</h2>
-    <img src="{{ $equipment->img_path }}" alt="img.jpg">
+    <img src="{{ $equipment->img_path }}" alt="img.jpg" style="width: 400px; height: auto;">
     <a href="{{ route('admin.map.equipment.edit', $equipment->id) }}" class="btn btn-secondary">Edit</a>
     <form action="{{ route('admin.map.equipment.destroy', $equipment->id) }}" method="POST" style="display:inline;">
       @csrf

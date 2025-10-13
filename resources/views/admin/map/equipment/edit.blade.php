@@ -16,7 +16,7 @@
 
       <div class="form-group">
         <label for="description">Descripción</label>
-        <textarea name="description" id="description" class="form-control" rows="5">{{ old('description') }}</textarea>
+        <textarea name="description" id="description" class="form-control" rows="5">{{ $equipment->description }}</textarea>
         @error('description')
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -28,6 +28,10 @@
         @error('img')
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+      </div>
+      <div class="form-group mb-2">
+        <p>Imagen actual:</p>
+        <img src="{{ $equipment->img_path }}" alt="img.jpg" style="width: 200px; height: auto;">
       </div>
 
       <button type="submit" class="btn btn-primary">Guardar Cambios</button>

@@ -13,7 +13,7 @@ a {
   position: relative;
   top: var(--navbar-height);
   display: flex;
-  height: calc(100dvh - var(--navbar-height));
+  min-height: calc(100dvh - var(--navbar-height));
 }
 .side-panel {
   position: fixed;

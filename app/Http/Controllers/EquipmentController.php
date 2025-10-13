@@ -70,7 +70,7 @@ class EquipmentController extends Controller {
    */
   public function edit($id) {
     $equipment = Equipment::findOrFail($id);
-    return view('admin.blogs.edit', compact('post'));
+    return view('admin.map.equipment.edit', compact('equipment'));
   }
 
   /**
@@ -104,7 +104,7 @@ class EquipmentController extends Controller {
     }
     $equipment->save();
 
-    return redirect()->route('blogs.index');
+    return redirect()->route('admin.map.equipment.index');
   }
 
   /**

@@ -49,7 +49,7 @@ class EquipmentController extends Controller {
       return back()->withErrors(['img' => 'Archivo no recibido']);
     }
 
-    $report = Report::create([
+    $report = Equipment::create([
       'description' => $validated['description'],
       'img_path' => $imgUrl,
     ]);

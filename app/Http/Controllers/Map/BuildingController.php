@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Map;
 use App\Http\Controllers\Controller;
 use App\Models\Map\Building;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BuildingController extends Controller {
   public function index() {

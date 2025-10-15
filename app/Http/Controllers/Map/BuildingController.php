@@ -55,7 +55,8 @@ class BuildingController extends Controller {
       'initial_longitude' => $validated['initial_longitude'],
       'final_latitude' => $validated['final_latitude'],
       'final_longitude' => $validated['final_longitude'],
-      'img_path' => $imgPath,
+      'img_path' => $imgUrl,
+      // 'img_path' => $imgPath,
     ]);
 
     return redirect()->route('admin.map.building.index')->with('success', 'Edificio creado exitosamente');

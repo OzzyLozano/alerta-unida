@@ -28,14 +28,14 @@ class FloorController extends Controller {
   }
 
   public function show($building, $id) {
-    $floor = Floor::findOrFail($id);
+    $floor = Floor::with('equipments')->findOrFail($id);
     $building = Building::findOrFail($building);
     return view('admin.map.building.floor.show', compact('floor', 'building'));
   }
 
   public function edit($building, $id) {
-    $floor = Floor::findOrFail($id);
-    $building = Building::findOrFail($building);
+    $floor = Floor::with('building')->findOrFail($id);
+    $building = $floor->building;
     return view('admin.map.building.floor.edit', compact('floor', 'building'));
   }
 

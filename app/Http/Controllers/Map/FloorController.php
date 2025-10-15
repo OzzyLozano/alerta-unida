@@ -94,6 +94,9 @@ class FloorController extends Controller {
 
     $floor->save();
 
-    return redirect()->route('admin.map.floor.show', $building, $id)->with('success', 'Piso actualizada correctamente.');
+    return redirect()->route('admin.map.floor.show', [
+      'building' => $building,
+      'id' => $id
+    ])->with('success', 'Piso actualizada correctamente.');
   }
 }

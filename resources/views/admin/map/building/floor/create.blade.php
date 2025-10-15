@@ -10,9 +10,8 @@
   <div class="container">
     <h1>Agregue un piso a: {{ $building->name }}</h1>
 
-    <form action="{{ route('admin.map.floor.store', $building->id) }}" method="PUT" enctype="multipart/form-data">
+    <form action="{{ route('admin.map.floor.store', $building->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
-      @method('PUT')
 
       <div class="form-group mb-3">
         <label>Nombre <span>(ejemplo, planta 1)</span></label>

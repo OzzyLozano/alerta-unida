@@ -69,7 +69,7 @@ Route::prefix('admin')
       Route::get('/{id}', [FloorController::class, 'show'])->name('show');
 
       Route::get('/{id}/edit', [FloorController::class, 'edit'])->name('edit');
-      Route::put('/{id}', [FloorController::class, 'update'])->name('update');
+      Route::post('/{id}', [FloorController::class, 'update'])->name('update');
       
       Route::delete('/{id}', [FloorController::class, 'destroy'])->name('destroy');
 

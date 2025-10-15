@@ -30,23 +30,23 @@ class BuildingController extends Controller {
       'img' => 'required|image|mimes:jpeg,png,jpg,gif',
     ]);
 
-    $imgPath = $request->file('img')->store('images/map/building', 'public');
-    // $imgUrl = null;
-    // if ($request->hasFile('img')) {
-    //   $file = $request->file('img');
-    //   $fileName = time() . '_' . $file->getClientOriginalName();
-    //   $imgPath = Storage::disk('r2')->putFileAs('map/building', $file, $fileName);
-
-    //   if (!empty($imgPath)) {
-    //     $imgUrl = Storage::disk('r2')->url($imgPath);
-    //   } else {
-    //     return back()->withErrors(['img' => 'No se pudo generar la URL del archivo']);
-    //   }
-
-    //   \Log::info('Archivo subido a R2: ' . $imgPath);
-    // } else {
-    //   return back()->withErrors(['img' => 'Archivo no recibido']);
-    // }
+    $imgUrl = null;
+    if ($request->hasFile('img')) {
+      $file = $request->file('img');
+      $fileName = time() . '_' . $file->getClientOriginalName();
+      $imgPath = Storage::disk('r2')->putFileAs('map/building', $file, $fileName);
+      
+      if (!empty($imgPath)) {
+        $imgUrl = Storage::disk('r2')->url($imgPath);
+      } else {
+        return back()->withErrors(['img' => 'No se pudo generar la URL del archivo']);
+      }
+      
+      \Log::info('Archivo subido a R2: ' . $imgPath);
+    } else {
+      return back()->withErrors(['img' => 'Archivo no recibido']);
+    }
+    // $imgPath = $request->file('img')->store('images/map/building', 'public');
 
     $building = Building::create([
       'name' => $validated['name'],
@@ -89,31 +89,31 @@ class BuildingController extends Controller {
     $building->final_longitude = $validated['final_longitude'];
     $building->name = $validated['name'];
     
-    // if ($request->hasFile('img')) {
-    //   $file = $request->file('img');
-    //   $fileName = time() . '_' . $file->getClientOriginalName();
-    //   $imgPath = Storage::disk('r2')->putFileAs('map/building', $file, $fileName);
-      
-    //   if (!empty($imgPath)) {
-    //     $imgUrl = Storage::disk('r2')->url($imgPath);
-
-    //     $oldUrl = $building->img_path;
-    //     $building->img_path = $imgUrl;
-    //     if (!empty($oldUrl)) {
-    //       $oldPath = str_replace(Storage::disk('r2')->url(''), '', $oldUrl);
-    //       $deleted = Storage::disk('r2')->delete($oldPath);
-    //       \Log::info('Imagen eliminada: ' . $oldPath);
-    //     }
-    //   } else {
-    //     return back()->withErrors(['img' => 'No se pudo generar la URL del nuevo archivo.']);
-    //   }
-
-    //   \Log::info('Archivo subido a R2: ' . $imgPath);
-    // }
     if ($request->hasFile('img')) {
-      $imgPath = $request->file('img')->store('images/map/building', 'public');
-      $building->img_path = $imgPath;
+      $file = $request->file('img');
+      $fileName = time() . '_' . $file->getClientOriginalName();
+      $imgPath = Storage::disk('r2')->putFileAs('map/building', $file, $fileName);
+      
+      if (!empty($imgPath)) {
+        $imgUrl = Storage::disk('r2')->url($imgPath);
+
+        $oldUrl = $building->img_path;
+        $building->img_path = $imgUrl;
+        if (!empty($oldUrl)) {
+          $oldPath = str_replace(Storage::disk('r2')->url(''), '', $oldUrl);
+          $deleted = Storage::disk('r2')->delete($oldPath);
+          \Log::info('Imagen eliminada: ' . $oldPath);
+        }
+      } else {
+        return back()->withErrors(['img' => 'No se pudo generar la URL del nuevo archivo.']);
+      }
+
+      \Log::info('Archivo subido a R2: ' . $imgPath);
     }
+    // if ($request->hasFile('img')) {
+    //   $imgPath = $request->file('img')->store('images/map/building', 'public');
+    //   $building->img_path = $imgPath;
+    // }
 
     $building->save();
 

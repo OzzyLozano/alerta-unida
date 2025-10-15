@@ -8,31 +8,38 @@ use App\Models\Map\Building;
 use Illuminate\Http\Request;
 
 class FloorController extends Controller {
-  public function create($id) {
-    $building = Building::with('floors')->findOrFail($id);
+  public function create($building) {
+    $building = Building::with('floors')->findOrFail($building);
     return view('admin.map.building.floor.create', compact('building'));
   }
 
-  public function store(Request $request, $id) {
-    $building = Building::with('floors')->findOrFail($id);
+  public function store(Request $request, $building) {
+    $building = Building::with('floors')->findOrFail($building);
     $validated = $request->validate([
       'level' => 'required|string',
     ]);
 
     $floor = Floor::create([
       'level' => $validated['level'],
-      'building_id' => $id,
+      'building_id' => $building->id,
     ]);
 
-    return redirect()->route('admin.map.building.show', compact('building'))->with('success', 'Piso creado exitosamente');
+    return redirect()->route('admin.map.building.show', $building->id)->with('success', 'Piso creado exitosamente');
   }
 
-  public function edit($floor_id) {
-    $floor = Floor::findOrFail($floor_id);
-    return view('admin.map.building.floor.edit', compact('floor'));
+  public function show($building, $id) {
+    $floor = Floor::findOrFail($id);
+    $building = Building::findOrFail($building);
+    return view('admin.map.building.floor.show', compact('floor', 'building'));
   }
 
-  public function update(Request $request, $id) {
+  public function edit($building, $id) {
+    $floor = Floor::findOrFail($id);
+    $building = Building::findOrFail($building);
+    return view('admin.map.building.floor.edit', compact('floor', 'building'));
+  }
+
+  public function update(Request $request, $building, $id) {
     $floor = Floor::findOrFail($id);
     $validated = $request->validate([
       'level' => 'required|string',
@@ -46,12 +53,47 @@ class FloorController extends Controller {
     return redirect()->route('admin.map.building.show', compact('building'))->with('success', 'Piso modificado exitosamente');
   }
 
-  public function destroy($id) {
+  public function destroy($building, $id) {
     $floor = Floor::findOrFail($id);
     $floor->delete();
 
-    $building = Building::with('floors')->findOrFail($floor->building_id);
+    return redirect()->route('admin.map.building.show', $building)->with('success', 'Piso eliminado exitosamente');
+  }
+  
+  public function addEquipment($building, $id) {
+    $floor = Floor::with('equipments')->findOrFail($id);
+    $equipments = \App\Models\Map\Equipment::all();
+    $building = Building::findOrFail($building);
+    return view('admin.map.building.floor.equipment.create', compact('floor', 'equipments', 'building'));
+  }
+  
+  public function submitEquipment(Request $request, $building, $id) {
+    $floor = Floor::findOrFail($id);
 
-    return redirect()->route('admin.map.building.show', compact('building'))->with('success', 'Piso eliminado exitosamente');
+    $validated = $request->validate([
+      'equipments_ids.*' => 'required|exists:equipments,id',
+      'equipments_latitude.*' => 'required|numeric|between:-90,90',
+      'equipments_longitude.*' => 'required|numeric|between:-180,180',
+    ]);
+    
+    // Guardar equipamientos
+    $equipmentIds = $request->input('equipments_ids', []);
+    $latitudes = $request->input('equipments_latitude', []);
+    $longitudes = $request->input('equipments_longitude', []);
+
+    foreach ($equipmentIds as $index => $equipmentId) {
+      if ($equipmentId) {
+        $floor->equipments()->attach($equipmentId, [
+          'latitude' => $latitudes[$index] ?? 0,
+          'longitude' => $longitudes[$index] ?? 0,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ]);
+      }
+    }
+
+    $floor->save();
+
+    return redirect()->route('admin.map.floor.show', $building, $id)->with('success', 'Piso actualizada correctamente.');
   }
 }

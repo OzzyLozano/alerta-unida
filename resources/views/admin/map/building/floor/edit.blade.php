@@ -10,7 +10,7 @@
   <div class="container">
     <h1>Editar: {{ $floor->id }}</h1>
 
-    <form action="{{ route('admin.map.floor.update', $floor->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.map.floor.update', ['building' => $building->id, 'id' => $floor->id]) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 

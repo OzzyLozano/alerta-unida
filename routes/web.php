@@ -62,12 +62,21 @@ Route::prefix('admin')
     Route::resource('building', BuildingController::class);
 
     // floor
-    Route::get('/building/{id}/floors/create', [FloorController::class, 'create'])->name('floor.create');
-    Route::get('/building/floors/edit/{id}', [FloorController::class, 'edit'])->name('floor.edit');
+    Route::prefix('building/{building}/floors')->name('floor.')->group(function () {
+      Route::get('/create', [FloorController::class, 'create'])->name('create');
+      Route::post('/', [FloorController::class, 'store'])->name('store');
 
-    Route::post('/building/{id}/floors', [FloorController::class, 'store'])->name('floor.store');
-    Route::put('/building/floors/{id}', [FloorController::class, 'update'])->name('floor.update');
-    Route::delete('/building/floors/{id}', [FloorController::class, 'destroy'])->name('floor.destroy');
+      Route::get('/{id}', [FloorController::class, 'show'])->name('show');
+
+      Route::get('/{id}/edit', [FloorController::class, 'edit'])->name('edit');
+      Route::put('/{id}', [FloorController::class, 'update'])->name('update');
+      
+      Route::delete('/{id}', [FloorController::class, 'destroy'])->name('destroy');
+
+      // equipment
+      Route::get('/{id}/equipment/create', [FloorController::class, 'addEquipment'])->name('add.equipment');
+      Route::post('/{id}/submit-equipment', [FloorController::class, 'submitEquipment'])->name('submit.equipment');
+    });
 
     // custom
     Route::get('/gate/{id}/add-equipment', [GateController::class, 'addEquipment'])->name('gate.add.equipment');

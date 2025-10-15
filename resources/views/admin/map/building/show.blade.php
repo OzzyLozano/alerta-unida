@@ -35,10 +35,10 @@
             <tr>
               <td>{{ $floor->level }}</td>
               <td>
-                <a href="{{ route('admin.map.floor.edit', $floor->id) }}">Editar</a>
+                <a href="{{ route('admin.map.floor.show', ['building' => $building->id, 'id' => $floor->id]) }}">Ver</a>
               </td>
               <td>
-                <form action="{{ route('admin.map.floor.destroy', $floor->id) }}" method="POST" style="display:inline;">
+                <form action="{{ route('admin.map.floor.destroy', ['building' => $building->id, 'id' => $floor->id]) }}" method="POST" style="display:inline;">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Borrar</button>

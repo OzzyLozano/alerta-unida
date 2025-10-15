@@ -8,8 +8,11 @@ use App\Http\Controllers\SimulacrumController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\FcmController;
-use App\Http\Controllers\EquipmentController;
-use App\Http\Controllers\GateController;
+
+use App\Http\Controllers\Map\EquipmentController;
+use App\Http\Controllers\Map\GateController;
+use App\Http\Controllers\Map\BuildingController;
+use App\Http\Controllers\Map\FloorController;
 
 use App\Http\Controllers\AlertsFlutterApi;
 use App\Http\Controllers\BrigadesFlutterApi;
@@ -56,6 +59,17 @@ Route::prefix('admin')
     })->name('index');
     Route::resource('equipment', EquipmentController::class);
     Route::resource('gate', GateController::class);
+    Route::resource('building', BuildingController::class);
+
+    // floor
+    Route::get('/building/{id}/floors/create', [FloorController::class, 'create'])->name('floor.create');
+    Route::get('/building/floors/edit/{id}', [FloorController::class, 'edit'])->name('floor.edit');
+
+    Route::post('/building/{id}/floors', [FloorController::class, 'store'])->name('floor.store');
+    Route::put('/building/floors/{id}', [FloorController::class, 'update'])->name('floor.update');
+    Route::delete('/building/floors/{id}', [FloorController::class, 'destroy'])->name('floor.destroy');
+
+    // custom
     Route::get('/gate/{id}/add-equipment', [GateController::class, 'addEquipment'])->name('gate.add.equipment');
     Route::post('/gate/{id}/submit-equipment', [GateController::class, 'submitEquipment'])->name('gate.submit.equipment');
   });

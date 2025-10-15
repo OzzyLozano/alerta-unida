@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Map;
 
 use App\Models\Map\Gate;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class GateController extends Controller {
@@ -46,7 +47,7 @@ class GateController extends Controller {
       return back()->withErrors(['img' => 'Archivo no recibido']);
     }
 
-    $report = Gate::create([
+    $gate = Gate::create([
       'description' => $validated['description'],
       'latitude' => $validated['latitude'],
       'longitude' => $validated['longitude'],

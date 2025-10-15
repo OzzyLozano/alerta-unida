@@ -43,7 +43,7 @@
                 </td>
                 <td>
                   @if($building->img_path)
-                    <img src="{{ '/storage/' . $building->img_path }}" alt="Imagen del edificio" style="width: 100px; height: auto;">
+                    <img src="{{ $building->img_path }}" alt="Imagen del edificio" style="width: 100px; height: auto;">
                   @else
                     No disponible
                   @endif

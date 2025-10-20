@@ -134,20 +134,14 @@ class GateController extends Controller {
 
     $validated = $request->validate([
       'equipments_ids.*' => 'required|exists:equipments,id',
-      'equipments_latitude.*' => 'required|numeric|between:-90,90',
-      'equipments_longitude.*' => 'required|numeric|between:-180,180',
     ]);
     
     // Guardar equipamientos
     $equipmentIds = $request->input('equipments_ids', []);
-    $latitudes = $request->input('equipments_latitude', []);
-    $longitudes = $request->input('equipments_longitude', []);
 
     foreach ($equipmentIds as $index => $equipmentId) {
       if ($equipmentId) {
         $gate->equipments()->attach($equipmentId, [
-          'latitude' => $latitudes[$index] ?? 0,
-          'longitude' => $longitudes[$index] ?? 0,
           'created_at' => now(),
           'updated_at' => now(),
         ]);

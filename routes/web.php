@@ -25,6 +25,7 @@ use App\Http\Controllers\Flutter\AuthFlutterController;
 use App\Http\Controllers\Flutter\BrigadesFlutterApi;
 use App\Http\Controllers\Flutter\CheckinFlutterApi;
 use App\Http\Controllers\Flutter\FcmController;
+use App\Http\Controllers\Flutter\MapController;
 use App\Http\Controllers\Flutter\MessagesFlutterController;
 use App\Http\Controllers\Flutter\ReportsFlutterController;
 use App\Http\Controllers\Flutter\UsersFlutterApi;
@@ -129,6 +130,13 @@ Route::prefix('api')
     '/brigades' => BrigadesFlutterApi::class,
     '/users' => UsersFlutterApi::class,
   ]);
+
+  // map
+  Route::prefix('map')->name('map.')->group(function () {
+    Route::get('meeting-points', [MapController::class, 'getMeetingPoints']);
+    Route::get('gates', [MapController::class, 'getGates']);
+    Route::get('buildings', [MapController::class, 'getBuildings']);
+  });
 });
 
 Route::get('/dashboard', function () {

@@ -12,6 +12,7 @@ use App\Http\Controllers\FcmController;
 use App\Http\Controllers\Map\EquipmentController;
 use App\Http\Controllers\Map\GateController;
 use App\Http\Controllers\Map\BuildingController;
+use App\Http\Controllers\Map\MeetingPointController;
 use App\Http\Controllers\Map\FloorController;
 
 use App\Http\Controllers\AlertsFlutterApi;
@@ -60,6 +61,7 @@ Route::prefix('admin')
     Route::resource('equipment', EquipmentController::class);
     Route::resource('gate', GateController::class);
     Route::resource('building', BuildingController::class);
+    Route::resource('meeting-point', MeetingPointController::class);
 
     // floor
     Route::prefix('building/{building}/floors')->name('floor.')->group(function () {

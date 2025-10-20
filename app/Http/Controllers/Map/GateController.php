@@ -51,7 +51,8 @@ class GateController extends Controller {
       'description' => $validated['description'],
       'latitude' => $validated['latitude'],
       'longitude' => $validated['longitude'],
-      'img_path' => $imgPath,
+      'img_path' => $imgUrl,
+      // 'img_path' => $imgPath,
     ]);
 
     return redirect()->route('admin.map.gate.index')->with('success', 'Unidad creada exitosamente');

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Alerts;
 
+use App\Models\UserType\Brigade;
 use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model {

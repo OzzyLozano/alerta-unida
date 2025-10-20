@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Alerts;
 
+use App\Models\UserType\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

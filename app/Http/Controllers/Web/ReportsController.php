@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Report;
-use App\Models\User;
-use App\Models\Brigade;
+use App\Models\UserType\User;
+use App\Models\UserType\Brigade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

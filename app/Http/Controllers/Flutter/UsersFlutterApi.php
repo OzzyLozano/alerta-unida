@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\UserType\User;
 use Illuminate\Http\Request;
 
 class UsersFlutterApi extends Controller {

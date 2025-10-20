@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use App\Models\Alerts;
-use App\Models\Brigade;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Alerts\Alerts;
+use App\Models\UserType\Brigade;
+use App\Models\UserType\User;
 use Illuminate\Http\Request;
 
 class AlertsController extends Controller {

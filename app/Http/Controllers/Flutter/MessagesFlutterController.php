@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
-use App\Models\Alerts;
-use App\Models\Brigade;
-use App\Models\Message;
+use App\Http\Controllers\Controller;
+use App\Models\Alerts\Alerts;
+use App\Models\UserType\Brigade;
+use App\Models\Alerts\Message;
 use Illuminate\Http\Request;
 use App\Events\NewChatMessage;
 

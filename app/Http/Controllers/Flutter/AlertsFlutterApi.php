@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
-use App\Models\Alerts;
+use App\Http\Controllers\Controller;
+use App\Models\Alerts\Alerts;
 use Illuminate\Http\Request;
 
 class AlertsFlutterApi extends Controller {

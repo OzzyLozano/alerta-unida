@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\UserType;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Brigade;
+use App\Models\UserType\Brigade;
 
 class TrainingInfo extends Model {
   protected $table = 'training_info';

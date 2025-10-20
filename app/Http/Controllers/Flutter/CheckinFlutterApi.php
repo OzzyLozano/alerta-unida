@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Checkin;
+namespace App\Http\Controllers\Flutter;
 
+use App\Http\Controllers\Controller;
+use App\Models\Alerts\Checkin;
 use Illuminate\Http\Request;
 
 class CheckinFlutterApi extends Controller {

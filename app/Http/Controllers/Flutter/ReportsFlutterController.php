@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
+use App\Http\Controllers\Controller;
 use App\Models\Report;
-use App\Models\Alerts;
+use App\Models\Alerts\Alerts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FcmToken;
 use Illuminate\Support\Facades\Validator;

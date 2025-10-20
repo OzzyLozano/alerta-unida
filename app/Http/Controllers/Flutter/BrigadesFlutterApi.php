@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
-use App\Models\Brigade;
+use App\Http\Controllers\Controller;
+use App\Models\UserType\Brigade;
 use Illuminate\Http\Request;
 
 class BrigadesFlutterApi extends Controller {

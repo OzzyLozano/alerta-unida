@@ -2,20 +2,16 @@ section {
   width: calc(100% - 2rem);
   height: calc(100dvh - var(--navbar-height) - 2rem);
   margin: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
 }
 
 .btn-primary {
   background-color: var(--green)!important;
   border: none;
 }
+.welcome {
+  position: relative;
+  top: var(--navbar-height);
+}
 
 @media (min-width: 48rem) {
-  section {
-    width: calc(100% - 4rem);
-    height: calc(100dvh - var(--navbar-height) - 4rem);
-    margin: 2rem;
-    padding: 2rem;
-  }
 }

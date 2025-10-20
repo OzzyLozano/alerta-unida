@@ -8,6 +8,6 @@
 
 @section('content')
   <section id="inicio" class="welcome">
-    <p>home</p>
+    <p>Inicio</p>
   </section>
 @endsection

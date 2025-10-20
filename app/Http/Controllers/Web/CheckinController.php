@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use App\Models\Checkin;
-use App\Models\Alerts;
+use App\Http\Controllers\Controller;
+use App\Models\Alerts\Checkin;
+use App\Models\Alerts\Alerts;
 use Illuminate\Http\Request;
 
 class CheckinController extends Controller

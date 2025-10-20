@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use App\Models\Message;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Alerts\Message;
+use App\Models\UserType\User;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller {

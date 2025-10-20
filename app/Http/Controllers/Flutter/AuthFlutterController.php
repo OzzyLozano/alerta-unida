@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flutter;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Brigade;
+use App\Models\UserType\User;
+use App\Models\UserType\Brigade;
 
 class AuthFlutterController extends Controller {
   public function login(Request $request) {
@@ -26,7 +27,7 @@ class AuthFlutterController extends Controller {
     ]);
   }
 
-  public function brigade_login(Request $request) {
+  public function brigadeLogin(Request $request) {
     $credentials = $request->only('email', 'password');
   
     if (! Auth::guard('brigade')->attempt($credentials)) {

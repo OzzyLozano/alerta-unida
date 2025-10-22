@@ -21,9 +21,8 @@
         <table class="table table-hover table-bordered">
           <thead>
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">Nombre</th>
-              <th scope="col">Coordenadas Iniciales</th>
+              <th scope="col">Coordenadas</th>
               <th scope="col">Foto</th>
               <th scope="col">Ver</th>
             </tr>
@@ -31,15 +30,16 @@
           <tbody class="table-group-divider">
             @foreach($buildings as $building)
               <tr>
-                <th scope="row">{{ $building->id }}</th>
                 <td>{{ $building->name }}</td>
                 <td>
-                  {{ $building->initial_latitude }} <br>
-                  {{ $building->initial_longitude }}
-                </td>
-                <td>
-                  {{ $building->final_latitude }} <br>
-                  {{ $building->final_longitude }}
+                  {{ $building->latitude_1 }} <br>
+                  {{ $building->ongitude_1 }}
+                  {{ $building->latitude_2 }} <br>
+                  {{ $building->longitude_2 }}
+                  {{ $building->latitude_3 }} <br>
+                  {{ $building->longitude_3 }}
+                  {{ $building->latitude_4 }} <br>
+                  {{ $building->longitude_4 }}
                 </td>
                 <td>
                   @if($building->img_path)

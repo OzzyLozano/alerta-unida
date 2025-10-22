@@ -24,10 +24,14 @@ class BuildingController extends Controller {
   public function store(Request $request) {
     $validated = $request->validate([
       'name' => 'required|string',
-      'initial_latitude' => 'required|numeric|between:-90,90',
-      'initial_longitude' => 'required|numeric|between:-180,180',
-      'final_latitude' => 'required|numeric|between:-90,90',
-      'final_longitude' => 'required|numeric|between:-180,180',
+      'latitude_1' => 'required|numeric|between:-90,90',
+      'longitude_1' => 'required|numeric|between:-180,180',
+      'latitude_2' => 'required|numeric|between:-90,90',
+      'longitude_2' => 'required|numeric|between:-180,180',
+      'latitude_3' => 'required|numeric|between:-90,90',
+      'longitude_3' => 'required|numeric|between:-180,180',
+      'latitude_4' => 'required|numeric|between:-90,90',
+      'longitude_4' => 'required|numeric|between:-180,180',
       'img' => 'required|image|mimes:jpeg,png,jpg,gif',
     ]);
 
@@ -51,10 +55,14 @@ class BuildingController extends Controller {
 
     $building = Building::create([
       'name' => $validated['name'],
-      'initial_latitude' => $validated['initial_latitude'],
-      'initial_longitude' => $validated['initial_longitude'],
-      'final_latitude' => $validated['final_latitude'],
-      'final_longitude' => $validated['final_longitude'],
+      'latitude_1' => $validated["latitude_1"],
+      'longitude_1' => $validated["longitude_1"],
+      'latitude_2' => $validated["latitude_2"],
+      'longitude_2' => $validated["longitude_2"],
+      'latitude_3' => $validated["latitude_3"],
+      'longitude_3' => $validated["longitude_3"],
+      'latitude_4' => $validated["latitude_4"],
+      'longitude_4' => $validated["longitude_4"],
       'img_path' => $imgUrl,
       // 'img_path' => $imgPath,
     ]);
@@ -78,17 +86,25 @@ class BuildingController extends Controller {
     
     $validated = $request->validate([
       'name' => 'string',
-      'initial_latitude' => 'numeric|between:-90,90',
-      'initial_longitude' => 'numeric|between:-180,180',
-      'final_latitude' => 'numeric|between:-90,90',
-      'final_longitude' => 'numeric|between:-180,180',
+      'latitude_1' => 'numeric|between:-90,90',
+      'longitude_1' => 'numeric|between:-180,180',
+      'latitude_2' => 'numeric|between:-90,90',
+      'longitude_2' => 'numeric|between:-180,180',
+      'latitude_3' => 'numeric|between:-90,90',
+      'longitude_3' => 'numeric|between:-180,180',
+      'latitude_4' => 'numeric|between:-90,90',
+      'longitude_4' => 'numeric|between:-180,180',
       'img' => 'image|mimes:jpeg,png,jpg,gif',
     ]);
 
-    $building->initial_latitude = $validated['initial_latitude'];
-    $building->initial_longitude = $validated['initial_longitude'];
-    $building->final_latitude = $validated['final_latitude'];
-    $building->final_longitude = $validated['final_longitude'];
+    $building->latitude_1 = $validated["latitude_1"];
+    $building->longitude_1 = $validated["longitude_1"];
+    $building->latitude_2 = $validated["latitude_2"];
+    $building->longitude_2 = $validated["longitude_2"];
+    $building->latitude_3 = $validated["latitude_3"];
+    $building->longitude_3 = $validated["longitude_3"];
+    $building->latitude_4 = $validated["latitude_4"];
+    $building->longitude_4 = $validated["longitude_4"];
     $building->name = $validated['name'];
     
     if ($request->hasFile('img')) {

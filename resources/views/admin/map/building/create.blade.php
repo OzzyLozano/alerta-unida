@@ -22,33 +22,65 @@
       </div>
 
       <div class="form-group mb-2">
-        <label for="initial_latitude">Latitud Inicial</label>
-        <input type="number" step="0.0000000001" name="initial_latitude" id="initial_latitude" class="form-control" required>
-        @error('initial_latitude')
+        <label for="latitude_1">Latitud 1</label>
+        <input type="number" step="0.0000000001" name="latitude_1" id="latitude_1" class="form-control" required>
+        @error('latitude_1')
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
       </div>
 
       <div class="form-group mb-2">
-        <label for="initial_longitude">Longitud Inicial</label>
-        <input type="number" step="0.0000000001" name="initial_longitude" id="initial_longitude" class="form-control" required>
-        @error('initial_longitude')
+        <label for="longitude_1">Longitud 1</label>
+        <input type="number" step="0.0000000001" name="longitude_1" id="longitude_1" class="form-control" required>
+        @error('longitude_1')
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
       </div>
 
       <div class="form-group mb-2">
-        <label for="final_latitude">Latitud Final</label>
-        <input type="number" step="0.0000000001" name="final_latitude" id="final_latitude" class="form-control" required>
-        @error('final_latitude')
+        <label for="latitude_2">Latitud 2</label>
+        <input type="number" step="0.0000000001" name="latitude_2" id="latitude_2" class="form-control" required>
+        @error('latitude_2')
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
       </div>
 
       <div class="form-group mb-2">
-        <label for="final_longitude">Longitud Final</label>
-        <input type="number" step="0.0000000001" name="final_longitude" id="final_longitude" class="form-control" required>
-        @error('final_longitude')
+        <label for="longitude_2">Longitud 2</label>
+        <input type="number" step="0.0000000001" name="longitude_2" id="longitude_2" class="form-control" required>
+        @error('longitude_2')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="form-group mb-2">
+        <label for="latitude_3">Latitud 3</label>
+        <input type="number" step="0.0000000001" name="latitude_3" id="latitude_3" class="form-control" required>
+        @error('latitude_3')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="form-group mb-2">
+        <label for="longitude_3">Longitud 3</label>
+        <input type="number" step="0.0000000001" name="longitude_3" id="longitude_3" class="form-control" required>
+        @error('longitude_3')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="form-group mb-2">
+        <label for="latitude_4">Latitud 4</label>
+        <input type="number" step="0.0000000001" name="latitude_4" id="latitude_4" class="form-control" required>
+        @error('latitude_4')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div>
+
+      <div class="form-group mb-2">
+        <label for="longitude_4">Longitud 4</label>
+        <input type="number" step="0.0000000001" name="longitude_4" id="longitude_4" class="form-control" required>
+        @error('longitude_4')
           <div class="alert alert-danger">{{ $message }}</div>
         @enderror
       </div>

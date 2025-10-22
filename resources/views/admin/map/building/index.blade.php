@@ -33,11 +33,11 @@
                 <td>{{ $building->name }}</td>
                 <td>
                   {{ $building->latitude_1 }} <br>
-                  {{ $building->ongitude_1 }}
+                  {{ $building->longitude_1 }} <br>
                   {{ $building->latitude_2 }} <br>
-                  {{ $building->longitude_2 }}
+                  {{ $building->longitude_2 }} <br>
                   {{ $building->latitude_3 }} <br>
-                  {{ $building->longitude_3 }}
+                  {{ $building->longitude_3 }} <br>
                   {{ $building->latitude_4 }} <br>
                   {{ $building->longitude_4 }}
                 </td>
